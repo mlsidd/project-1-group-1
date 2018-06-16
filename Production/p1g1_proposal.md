@@ -31,7 +31,7 @@ They can offer a shortlist of other services they would be able to provide i.e. 
     1. You can access Zillow API information and documentation here. Be sure to use your ZWSID for all your API calls.
 1. Open Weather Map
     1. Link - http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
-    1. Key - http://openweathermap.org/api?utm_source=xemail&utm_campaign=new.customer&src=603ebbea36b23f88ed6cb3990487baf7
+    1. Key - 14a1143b7ec58eae4597c24cac314ed1
     1. Documentaton - http://openweathermap.org/api?utm_source=xemail&utm_campaign=new.customer&src=603ebbea36b23f88ed6cb3990487baf7
     1 Words
  
