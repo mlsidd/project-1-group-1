@@ -1,12 +1,12 @@
 # Clippr - LanScape
 
-##Members
+## Members
 * Reza 
 * Melissa
 * Austin
 * Leonard
 
-##Project Description
+## Project Description
 This core concept around this application is plain and simple, help both
 property owners and land scaping companies achieve their goals faster,
 cheaper and to their absolute satisfaction. 
