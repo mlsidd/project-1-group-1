@@ -28,7 +28,6 @@ They can offer a shortlist of other services they would be able to provide i.e. 
     1. Docuumtation https://developers.google.com/maps/documentation/javascript/firebase
 1. Zillow API Network
     1. Your Zillow Web Services Identification (ZWSID) is: X1-ZWz1ghz4ab56vf_8i7yl
-    1. Key - 14a1143b7ec58eae4597c24cac314ed1
     1. You can access Zillow API information and documentation here. Be sure to use your ZWSID for all your API calls.
 1. Open Weather Map
     1. Link - http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
