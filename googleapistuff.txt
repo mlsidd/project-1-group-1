@@ -1,0 +1,12 @@
+google maps api key
+
+AIzaSyASiDS43IiyqBaAMVyyX-TagFVDMN-EFfQ
+
+
+
+google login api for https://lawnlawnland.com
+{"web":{"client_id":"529198267782-skbi0r4813291v26oi725igjimjnlib3.apps.googleusercontent.com","project_id":"p1g1-1529170361488","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"jsNtrWPHWlqTVm22n3LRFJa8","javascript_origins":["https://lawnlawnland.com"]}}
+Client ID
+529198267782-skbi0r4813291v26oi725igjimjnlib3.apps.googleusercontent.com
+Client Secret
+jsNtrWPHWlqTVm22n3LRFJa8
