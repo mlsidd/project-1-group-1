@@ -1,6 +1,28 @@
 # project-1-group-1
 PM - Reza
 GM - Melissa
+
+## Core
+* Registration
+    * Vendors Reg
+        * Business Name
+        * Business Address
+        * Contact information
+        * Link to review websites
+        * Billing Blah Blah
+        * Applicable licenses?
+    * User Reg
+        * User Name
+        * User Real Name
+        * Contact Info
+* Vendor Landing Page
+* User Landing Page
+
+
+
+
+
+
 ## MVP's
 1. Firebase to store all data.
 1. Payment processing (Paypal/Coinbase/..?)
