@@ -18,14 +18,25 @@ GM - Melissa
 * Vendor Landing Page
 * User Landing Page
 
-
-
-
-
-
 ## MVP's
+* User and Vendor Profile
+* Services List
+* Jobs Board
+* Confirmation (Receipt Generation)
+
+
+## NOT MVP
+* Wait to use calendars, prices, location and services to filter jobs 
+* Ping via SMS 
+    * Vendors when new jobs listed.
+    * New registration (registrant).
+    * Job accepted/cancelled/delayed.
+    * 
+
+
+## The WHOLE DAMN DEAL
 1. Firebase to store all data.
-1. Payment processing (Paypal/Coinbase/..?)
+1. Payment processing (Paypal/Coinbase/Stripe)
 1. Google/FB Authentication
 1. Weather
     1. Api
@@ -47,4 +58,5 @@ GM - Melissa
         1. Time Based
         1. Location Based
         1. Size Based
-1. 
+1. Reviews  
+    1. Link to Yelp, other review nonsense
