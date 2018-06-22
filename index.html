@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>map implementation playground</title>
+        <style>
+            /* Always set the map height explicitly to define the size of the div
+             * element that contains the map. */
+            #main_page_map {
+              
+              height: 90%;
+              width: 90%;
+              margin:auto auto;
+            }
+            /* Optional: Makes the sample page fill the window. */
+            html, body {
+              height: 100%;
+              margin: 0;
+              padding: 0;
+            }
+          </style>
+    </head>
+    <body>
+
+
+
+
+        <div id="main_page_map"></div>
+        <input id="addy" type="text" placeholder="enter your address">
+
+
+   
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTwlzUpyLqmmDTtdCr2wM18mYBmnnIUfE&callback=initMap"
+        async defer></script>
+
+
+        <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyCrkGaznO_jJ-5atlJsf4Z9ll-k9ZR_gzE",
+            authDomain: "p1g1-1529170361488.firebaseapp.com",
+            databaseURL: "https://p1g1-1529170361488.firebaseio.com",
+            projectId: "p1g1-1529170361488",
+            storageBucket: "p1g1-1529170361488.appspot.com",
+            messagingSenderId: "529198267782"
+          };
+          firebase.initializeApp(config);
+        </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type"text/javascript" src="assets/javascript/maplogic.js"></script>
+    </body>
+</html>
