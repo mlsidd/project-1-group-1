@@ -1,0 +1,68 @@
+<!doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Client Login - LawnLawnLand</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/LoginandRegistration-client-style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="javascript/clientLoginLogic.js"></script>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-5 text-center">Create Your Free Account!</h1>
+    </div> <!--end jumbotron-->
+            
+    <div class="container">
+        <div class="row">
+          <!-- Sign-Up Card-->
+            <div class="col-lg-6">
+                <div class="card card-primary"  id="createAccountCard">
+                    <div class="card-body">
+            
+                    <!-- Sign-up Form -->
+                    <form role="form">
+                        <div class="form-group row">
+                            <button class="btn btn-danger" id="google-signup" type="submit">Sign Up with Google</button>
+                        </div>
+                        <div class="form-group row">
+                            <button class="btn btn-danger" id="facebook-signup" type="submit">Sign Up with Facebook</button>
+                        </div>              
+                        <div id="orOption">
+                            --or Create Your Account Below--
+                        </div>       
+                        <div class="form-group row">
+                            <label for="email-input"></label>
+                            <input class="form-control" id="email-input" type="email" placeholder="Your Email Address">
+                        </div>
+                        <div class="form-group row">
+                            <label for="age-input"></label>
+                            <input class="form-control" id="password-input" type="password" placeholder="Create Your Password">
+                        </div>
+                        <button class="btn btn-primary" id="create-client-account" type="submit">Create Account</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+            <div class="col-6" id="map-holder">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-warning" id="place-holder">
+                        Map will go here (Austin)
+                        </div>
+                    </div>
+                    <div class="col-12" id="satellite-image-holder">
+                        <div class="card card-warning" id="place-holder">
+                        Satellite Image of Home goes here
+                        </div>
+                    </div>
+                </div> <!--end of row holding map and home image-->
+            </div>
+
+        </div> <!--end of row-->
+    
+    </div><!--end of container--> 
+    
+</body>
+</html>
