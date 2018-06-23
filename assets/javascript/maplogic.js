@@ -1,4 +1,4 @@
-
+/*
 var address;
 var coord = {lat:0,lng:0};
 //google maps stuff
@@ -15,16 +15,7 @@ var coord = {lat:0,lng:0};
       zoom: 6
     });
     infoWindow = new google.maps.InfoWindow;
-    var autocomplete = new google.maps.places.Autocomplete($("#addy"));
-    google.maps.events.addListener(autocomplete,'plac_changed',function(){
-        var places = autocomplete.getplace();
-        address = places.formatted_address
-        coord= {lat:places.geometry.location.A,
-                lng:places.geometry.location.F};
-        console.log(coord);
-        console.log(address);
-        
-    });
+   
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -55,7 +46,7 @@ var coord = {lat:0,lng:0};
     infoWindow.open(map);
   }
 
-
+*/
 
 
 
@@ -177,20 +168,35 @@ firebase.database().ref("users").set(dummyArray);
 firebase.database().ref("users").push(guy);
 
 
-function test(x)
-{ //create a for user array length loop
-    //if(isservice)& service provider is within x distance from you
-    //drop a pin on their coordinates.
 
-let pos = dummyArray[x].coordinates;
-let dude = new google.maps.InfoWindow;
-dude.setPosition(pos);
-dude.setContent('here is dude.');
-dude.open(map);
+
+
+function init()
+{
+  var mapOptions={
+    center: new google.maps.LatLng({lat: 29.760426700000004, lng: -95.3698028}),
+    zoom:6
+  };
+  var map;
+  map = new google.maps.Map(document.getElementById('main_page_map'),mapOptions);
+
+  
+};
+
+function loadScript()
+{
+  var script = $("<script>");
+  script.attr("src",'https://maps.googleapis.com/maps/api/js?key=AIzaSyDTwlzUpyLqmmDTtdCr2wM18mYBmnnIUfE&callback=init');
+  $("body").append(script);
+
+
+
 }
-test(0);
-test(2);
-test(3);
+
+
+
+
+
 
 
 
@@ -209,3 +215,88 @@ test(3);
 
 //function that takes address and returns street view/
 //and or close top down view
+dude=dummyArray[0];
+//json api call for address to coordinates.
+address= dude.address+" "+dude.city+" "+dude.state+" "+dude.zip;
+qurl="https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyDTwlzUpyLqmmDTtdCr2wM18mYBmnnIUfE";
+var a;
+$.ajax({
+    method:"GET",
+    url:qurl
+}).then(function(result){a=result;
+console.log(a)});
+
+
+
+
+
+function init()
+{
+  var mapOptions={
+    center: new google.maps.LatLng(29.760426700000004,-95.3698028),
+    //mapType: google.maps.MapTypeid.ROADMAP,
+    zoom:13
+  };
+  qurl="https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyDTwlzUpyLqmmDTtdCr2wM18mYBmnnIUfE";
+  var map = new google.maps.Map(document.getElementById('main_page_map'),mapOptions);
+dude=dummyArray[0];
+//json api call for address to coordinates.
+address= dude.address+" "+dude.city+" "+dude.state+" "+dude.zip;
+  $.ajax({
+    method:"GET",
+    url:qurl
+}).then(function(result){
+a=result;
+console.log(a);
+console.log(a.results[0].geometry.location);
+addycoordinates=a.results[0].geometry.location;
+let pos = addycoordinates;
+useraddy = new google.maps.InfoWindow;
+useraddy.setPosition(pos);
+useraddy.setContent(a.results[0].formatted_address);
+useraddy.open(map);
+});
+/*
+function test(x)
+{ //create a for user array length loop
+    //if(isservice)& service provider is within x distance from you
+    //drop a pin on their coordinates.
+  
+let pos = addycoordinates;
+useraddy = new google.maps.InfoWindow;
+useraddy.setPosition(pos);
+useraddy.setContent('here is dude.');
+useraddy.open(map);
+}  
+test(0);*/
+
+
+
+var a;
+$.ajax({
+    method:"GET",
+    url:qurl
+}).then(function(result){
+a=result;
+console.log(a);
+console.log(a.results[0].geometry.location);
+addycoordinates=a.results[0].geometry.location;
+});
+};
+
+function loadScript()
+{
+  var script = $("<script>");
+  script.attr("src",'https://maps.googleapis.com/maps/api/js?key=AIzaSyDTwlzUpyLqmmDTtdCr2wM18mYBmnnIUfE&callback=init');
+  $("body").append(script);
+
+}
+
+
+
+window.onload = loadScript;
+
+
+
+
+
