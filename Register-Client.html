@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Client Registration - LawnLawnLand</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/LoginandRegistration-client-style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/client-style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <script src="javascript/clientLoginLogic.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
 </head>
 <body>
     <div class="jumbotron">
@@ -27,7 +27,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="clientLastName">Last Name</label>
-                            <input type="text" class="form-control" id="inputPassword4" placeholder="Password">
+                            <input type="text" class="form-control" id="clientLastName" placeholder="Last Name">
                         </div>
                     </div> <!--end of row-->
                         <div class="form-group">
@@ -47,11 +47,53 @@
                             <label for="inputState">State</label>
                             <select id="inputState" class="form-control">
                                 <option selected>Choose...</option>
-                                <option>Alabama</option>
-                                <option>Arkansas</option>
-                                <option>Arizona</option>
-                                <option>Alaska</option>
-                                <option>California</option>
+                                <option> Alabama </option>
+                                <option> Alaska </option>
+                                <option> Arizona </option>
+                                <option> Arkansas </option>
+                                <option> California </option>
+                                <option> Colorado </option>
+                                <option> Connecticut </option>
+                                <option> Delaware </option>
+                                <option> Florida </option>
+                                <option> Georgia </option>
+                                <option> Hawaii </option>
+                                <option> Idaho </option>
+                                <option> Illinois Indiana </option>
+                                <option> Iowa </option>
+                                <option> Kansas </option>
+                                <option> Kentucky </option>
+                                <option> Louisiana </option>
+                                <option> Maine </option>
+                                <option> Maryland </option>
+                                <option> Massachusetts </option>
+                                <option> Michigan </option>
+                                <option> Minnesota </option>
+                                <option> Mississippi </option>
+                                <option> Missouri </option>
+                                <option> Montana Nebraska </option>
+                                <option> Nevada </option>
+                                <option> New Hampshire </option>
+                                <option> New Jersey </option>
+                                <option> New Mexico </option>
+                                <option> New York </option>
+                                <option> North Carolina </option>
+                                <option> North Dakota </option>
+                                <option> Ohio </option>
+                                <option> Oklahoma </option>
+                                <option> Oregon </option>
+                                <option> Pennsylvania Rhode Island </option>
+                                <option> South Carolina </option>
+                                <option> South Dakota </option>
+                                <option> Tennessee </option>
+                                <option> Texas </option>
+                                <option> Utah </option>
+                                <option> Vermont </option>
+                                <option> Virginia </option>
+                                <option> Washington </option>
+                                <option> West Virginia </option>
+                                <option> Wisconsin </option>
+                                <option> Wyoming </option>
                             </select>
                         </div>
                         <div class="form-group col-md-2">
@@ -92,14 +134,13 @@
                                     Trim Bushes
                                 </label>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="option4">
-                                <label class="form=check-label" for="option4">
-                                    Option 4
-                                </label>
-                            </div>
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div id="data-validation-message-registration">
+                            
+                        </div>
+                    </div>       
                     <div class="form-row" id="lastRowOfForm">
                         <div class="col-sm-4">
                             <button type="submit" class="btn btn-primary" id="create-client-profile">Sign Me Up!</button>
@@ -114,6 +155,9 @@
             </div> <!--end of column-->
         </div> <!--end of row-->
     </div> <!--end of container-->
-    
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="javascript/clientLoginLogic.js"></script>
+        
 </body>
 </html>

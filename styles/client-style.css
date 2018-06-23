@@ -31,7 +31,8 @@
 }
 
 #registrationForm {
-    background:rgb(189, 189, 189)
+    background:rgb(189, 189, 189);
+    margin-bottom: 20px;
 }
 
 #firstRowOfForm {
@@ -47,4 +48,27 @@
     border-style: solid;
     border-color: rgb(24, 23, 23);
     border-width: 1px;
+}
+
+#data-validation-message {
+    margin-top: 10px;
+    margin-bottom:10px;
+    color:red;
+}
+
+#left-side-panel {
+    margin-left: 20px;
+}
+
+body {
+    background-color: greenyellow;
+}
+
+.clientPanelButtons {
+    margin-bottom: 10px;
+}
+#data-validation-message-registration {
+    color: red;
+    margin-top:20px;
+    margin-bottom: 20px;
 }
