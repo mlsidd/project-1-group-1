@@ -168,7 +168,7 @@ firebase.database().ref("users").set(dummyArray);
 firebase.database().ref("users").push(guy);
 
 
-
+/*
 
 
 function init()
@@ -196,7 +196,7 @@ function loadScript()
 
 
 
-
+*/
 
 
 
