@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Provider Registration - LawnLawnLand</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/provider-style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="Login-Client.html">Customer Login</a>
+                <a class="nav-item nav-link" href="Login-Provider.html">Provider Login</a>
+                <a class="nav-item nav-link" href="#">Sign Up</a>
+            </div>
+        </div>
+    </nav>        
+    <div class="jumbo" id="providerRegJumbo">
+        <h1 class="display-5 text-center">Complete Your Registration to get Started!</h1>
+    </div>
+    <div class="row" id="row1">
+        <!-- Create Profile Card-->
+        <div class="col-6 offset-3" id="registrationForm">
+            <form id="registrationForm">
+                <div class="form-row" id="firstRowOfForm">
+                    <div class="form-group col-md-6">
+                        <label for="providerFirstName">First Name</label>
+                        <input type="text" class="form-control" id="providerFirstName" placeholder="First Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="providerLastName">Last Name</label>
+                        <input type="text" class="form-control" id="providerLastName" placeholder="Last Name">
+                    </div>
+                </div> <!--end of row-->
+                <div class="form-row">
+                    <div class ="form-group col-md-6">
+                        <label for-"businessName">Business Name:</label>
+                        <input type=text class="form-control" id="businessName" placeholder="Optional">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="providerPhoneNumber">Phone Number</label>
+                        <input type="text" class="form-control" id="providerPhoneNumber" placeholder="281-980-3434">
+                    </div>
+                </div> <!--end of row-->    
+                    <div class="form-group">
+                        <label for="inputAddress">Business Address</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress2">Address 2</label>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                    </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">State</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option> Alabama </option>
+                            <option> Alaska </option>
+                            <option> Arizona </option>
+                            <option> Arkansas </option>
+                            <option> California </option>
+                            <option> Colorado </option>
+                            <option> Connecticut </option>
+                            <option> Delaware </option>
+                            <option> Florida </option>
+                            <option> Georgia </option>
+                            <option> Hawaii </option>
+                            <option> Idaho </option>
+                            <option> Illinois Indiana </option>
+                            <option> Iowa </option>
+                            <option> Kansas </option>
+                            <option> Kentucky </option>
+                            <option> Louisiana </option>
+                            <option> Maine </option>
+                            <option> Maryland </option>
+                            <option> Massachusetts </option>
+                            <option> Michigan </option>
+                            <option> Minnesota </option>
+                            <option> Mississippi </option>
+                            <option> Missouri </option>
+                            <option> Montana Nebraska </option>
+                            <option> Nevada </option>
+                            <option> New Hampshire </option>
+                            <option> New Jersey </option>
+                            <option> New Mexico </option>
+                            <option> New York </option>
+                            <option> North Carolina </option>
+                            <option> North Dakota </option>
+                            <option> Ohio </option>
+                            <option> Oklahoma </option>
+                            <option> Oregon </option>
+                            <option> Pennsylvania Rhode Island </option>
+                            <option> South Carolina </option>
+                            <option> South Dakota </option>
+                            <option> Tennessee </option>
+                            <option> Texas </option>
+                            <option> Utah </option>
+                            <option> Vermont </option>
+                            <option> Virginia </option>
+                            <option> Washington </option>
+                            <option> West Virginia </option>
+                            <option> Wisconsin </option>
+                            <option> Wyoming </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">Zip</label>
+                        <input type="text" class="form-control" id="inputZip">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class ="form-group col-md-6">
+                        <label for-"providerDistanceTravel">Miles Willing To Travel:</label>
+                        <select id="miles" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>Less than 5 miles</option>
+                            <option> 5 miles </option>
+                            <option> 10 miles </option>                  
+                            <option> 15 miles </option>                  
+                            <option> 20 miles </option>
+                            <option> 25 miles </option>                  
+                            <option> 30 miles </option>                  
+                            <option> 35 miles </option>                  
+                            <option> 40 miles </option>                  
+                            <option> 45 miles </option>                  
+                            <option> 50 miles </option>                           
+                            <option> More than 50 miles </option>                           
+                        </select>   
+                    </div>
+                </div>
+                <div class="form-row" id="servicesRow">
+                    <div class="col-sm-4">Services Provided:</div>
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="mowing" value="mowing">
+                            <label class="form-check-label" for="mowing">
+                            Lawn Mowing
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="edging" value="edging">
+                            <label class="form-check-label" for="edging">
+                            Edging
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="trimBushes" value="trimBushes">
+                            <label class="form-check-label" for="trimBushes">
+                                Trim Bushes
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row" id="daysRow">
+                    <div class="col-sm-4">Days of the Week Available</div>
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="monday" value="Monday">
+                            <label class="form-check-label" for="monday">
+                            Monday
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="tuesday" value="Tuesday">
+                            <label class="form-check-label" for="tuesday">
+                            Tuesday
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="wednesday" value="Wednesday">
+                            <label class="form-check-label" for="wed">
+                                Friday
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="thursday" value="Thursday">
+                            <label class="form-check-label" for="thursday">
+                            Saturday
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 offset-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="friday" value="Friday">
+                                <label class="form-check-label" for="Friday">
+                                Wednesday
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="saturday" value="Saturday">
+                                <label class="form-check-label" for="Saturday">
+                                Thursday
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="sunday" value="Sunday">
+                                <label class="form-check-label" for="sunday">
+                                    Sunday
+                                </label>
+                            </div>
+                        </div>
+                </div>
+                <div class="form-row">
+                    <div id="data-validation-message-registration">
+                        
+                    </div>
+                </div>       
+                <div class="form-row d-flex justify-content-center" id="lastRowOfForm">
+                    <button type="submit" class="btn btn-primary" id="create-provider-profile">Sign Me Up!</button>
+                </div>
+            </form>
+        </div>
+    </div> <!--end of row-->
+    <div class-"row" id="footer">
+        <div class="card-footer text-dark text-center">
+                &copy LawnLawnLand 
+        </div>
+    </div> <!--end of footer-->
+    
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="assets/javascript/ProviderPagesLogic.js"></script>
+        
+</body>
+</html>

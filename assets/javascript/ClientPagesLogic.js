@@ -71,7 +71,6 @@ var config = {
     storageBucket: "thp1g1-1529168178742.appspot.com",
     messagingSenderId: "293280499251"
   };
-  
   firebase.initializeApp(config);
   
   var dataRef = firebase.database();
@@ -110,7 +109,7 @@ var config = {
         $("#data-validation-message-registration").append("<p> Make sure you select your city");
     } if(zip.length < 5 || zip.length > 5) {
         $("#data-validation-message-registration").append("<p> Enter a valid zip code");
-    } if(phone.length < 11 || phone.length > 10) {
+    } if(phone.length < 10 || phone.length > 10) {
         $("#data-validation-message-registration").append("<p> Enter a valid phone number");
     } if(squareFootage.length < 1) {
         $("#data-validation-message-registration").append("<p> Make sure you enter the square footage of your lawn");
