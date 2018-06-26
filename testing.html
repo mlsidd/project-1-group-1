@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>testing</title>
+    </head>
+    <body>
+
+
+            <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script>
+        var config = {
+    apiKey: "AIzaSyDFhTiBSjTaFH-bYZdHI5v_FRS3nE76adk",
+    authDomain: "thp1g1-1529168178742.firebaseapp.com",
+    databaseURL: "https://thp1g1-1529168178742.firebaseio.com",
+    projectId: "thp1g1-1529168178742",
+    storageBucket: "thp1g1-1529168178742.appspot.com",
+    messagingSenderId: "293280499251"
+  };
+  
+  firebase.initializeApp(config);
+  var dataRef = firebase.database();
+
+
+serviceproviders = new Array({
+    name:"mow town",
+    about:"imagine a bio here",
+    rating:5,
+    price:3,
+    coordinates:{lat:30.00284811418566,lng:-95.55981367910158},
+    number:"55555555555"
+},{
+    name:"lawn lords",
+    about:"imagine a bio here",
+    rating:3,
+    price:5,
+    coordinates:{lat:29.965973873027632,lng:-95.66349715078127},
+    number:"55555555555"
+},{
+    name:"jimmy jim jimmerson",
+    about:"imagine a bio here",
+    rating:5,
+    price:1,
+    coordinates:{lat:29.944556741456193,lng:-95.5996391185547},
+    number:"55555555555"
+},{
+    name:"sir sucks at lawn care",
+    about:"imagine a bio here",
+    rating:1,
+    price:50,
+    coordinates:{lat:30.018307429663004,lng:-95.6209251292969},
+    number:"55555555555"
+});
+var jokenames = new Array("Al E. Gater","Amanda Lynn","Arty Fischell","Ben Dover","Dick Tate","Levy Tate","Seymour Butz","Sarah Nader","Shirley U. Care","Earl E. Bird","Stan Dupp","Jay Walker","Lorne Mowers");
+
+for(let i=0;i<jokenames.length;i++)
+{
+    lati = Math.random()*(30.048377-29.621902)+29.621902;
+long = Math.random()*(-95.156612 - -95.751247)+ -95.751247;
+
+serviceproviders.push({
+    name:jokenames[i],
+    about:"imagine a bio here",
+    rating:Math.floor(Math.random()*5)+1,
+    price:Math.floor(Math.random()*50)+1,
+    coordinates:{lat:lati,lng:long},
+    number:"55555555555"
+});
+}
+
+
+
+dataRef.ref("svcproviders").set(serviceproviders);
+  dataRef.ref("svcproviders").on("value", function(snapshot){
+      console.log(snapshot.val());
+  });
+
+        </script>
+    </body>
+</html>

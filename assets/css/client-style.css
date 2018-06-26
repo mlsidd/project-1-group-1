@@ -72,3 +72,9 @@ body {
     margin-top:20px;
     margin-bottom: 20px;
 }
+#main_page_map {
+              
+    height: 40%;
+    width: 40%;
+    margin:auto auto;
+  }

@@ -48,7 +48,7 @@ var coord = {lat:0,lng:0};
 
 */
 
-
+/*
 
 users = firebase.database().ref().child("users");
 dummyArray = [
@@ -166,7 +166,7 @@ users.on('value',function(snapshot)
 
 firebase.database().ref("users").set(dummyArray);
 firebase.database().ref("users").push(guy);
-
+*/
 
 /*
 
@@ -215,8 +215,9 @@ function loadScript()
 
 //function that takes address and returns street view/
 //and or close top down view
-dude=dummyArray[0];
+//dude=dummyArray[0];
 //json api call for address to coordinates.
+/*
 address= dude.address+" "+dude.city+" "+dude.state+" "+dude.zip;
 qurl="https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyDTwlzUpyLqmmDTtdCr2wM18mYBmnnIUfE";
 var a;
@@ -225,8 +226,12 @@ $.ajax({
     url:qurl
 }).then(function(result){a=result;
 console.log(a)});
+*/
+
+var dataRef = firebase.database();
 
 
+var svcpvdrs = new Array();
 
 
 
@@ -235,15 +240,21 @@ function initialize_main_page_map()
  
   qurl="https://maps.googleapis.com/maps/api/geocode/json?address="+userinfo.address+"&key=AIzaSyDTwlzUpyLqmmDTtdCr2wM18mYBmnnIUfE";
  
-
+var a
 //json api call for address to coordinates.
 //address= dude.address+" "+dude.city+" "+dude.state+" "+dude.zip;
   $.ajax({
     method:"GET",
     url:qurl
 }).then(function(result){
+  dataRef.ref("svcproviders").on("value", function(snapshot){
+    console.log(snapshot.val());
+    providers = snapshot.val();
+    
 
 a=result;
+
+
 
 console.log(a);
 console.log(a.results[0].geometry.location);
@@ -254,11 +265,36 @@ var mapOptions={
   //mapType: google.maps.MapTypeid.ROADMAP,
   zoom:13
 };
+
 var map = new google.maps.Map(document.getElementById('main_page_map'),mapOptions);
+var scontent = new Array();
+var sinfo = new Array();
+var smarker = new Array();
+for(let i=0;i<providers.length;i++)
+{  let s = providers[i] ;
+  
+   scontent.push("name: "+s.name+"<br>rating: "+s.rating+"<br>about: "+s.about+"<br>price per sqft: "+s.price+"<br> number: "+s.number);
+   sinfo.push( new google.maps.InfoWindow({content:scontent[i]}));
+    smarker.push( new google.maps.Marker({
+     position:s.coordinates,
+     map:map,
+     title:s.name
+     
+   }));
+   smarker[i].addListener('click',function(){sinfo[i].open(map,smarker[i]);});
+   console.log("testing");
+}
+
+
 useraddy = new google.maps.InfoWindow;
 useraddy.setPosition(pos);
 useraddy.setContent(a.results[0].formatted_address);
 useraddy.open(map);
+
+
+dataRef.ref("svcproviders").off("value");
+
+});
 });
 /*
 function test(x)
@@ -275,7 +311,7 @@ useraddy.open(map);
 test(0);*/
 
 
-
+/*
 var a;
 $.ajax({
     method:"GET",
@@ -285,7 +321,7 @@ a=result;
 console.log(a);
 console.log(a.results[0].geometry.location);
 addycoordinates=a.results[0].geometry.location;
-});
+});*/
 };
 
 function loadScript()
@@ -293,7 +329,7 @@ function loadScript()
   var script = $("<script>");
   script.attr("src",'https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDTwlzUpyLqmmDTtdCr2wM18mYBmnnIUfE&callback=initAutocomplete');
   $("body").append(script);
-
+  console.log("script loaded");
 }
 
     // This example displays an address form, using the autocomplete feature
@@ -356,7 +392,18 @@ var userinfo={address:""};
       }
 
 
-window.onload = loadScript;
+
+
+      //function to initialize landing page map
+      function initialize_landing_page_map(userinfo)
+      { 
+
+      }
+
+
+
+
+//window.onload = loadScript;
 
 
 
