@@ -1,0 +1,278 @@
+#body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#orOption {
+    margin-top: 30px;
+    margin-bottom:10px;
+}
+
+#registrationHeaders {
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+#registrationHeadersPara {
+    font-size: 18px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#createAccountCard {
+    background-color: black;
+    color:white;
+}
+
+#map-holder {
+    margin-top:50px;
+}
+
+#place-holder {
+    height:100px;
+    border-style: solid;
+    border: rgb(51, 66, 153);
+    border-width: 10px;
+    background-color: rgb(29, 32, 31);
+    color: white;
+    text-align:center;
+    margin-top:10px;
+}
+
+#holder-for-map{
+    float:left;
+}
+
+#registrationForm {
+    background-color: black;
+    margin-bottom: 20px;
+    margin-top:20px;
+    color: white;
+}
+
+#startSeeingHeading {
+    color: rgb(12, 17, 2);
+}
+
+#firstRowOfForm {
+    margin-top:10px;
+}
+
+#lastRowOfForm {
+    margin-bottom:10px;
+    margin-top:10px;
+}
+
+#servicesRow {
+    border-style: solid;
+    border-color: rgb(24, 23, 23);
+    border-width: 1px;
+}
+
+#daysRow {
+    border-style: solid;
+    border-color: rgb(24, 23, 23);
+    border-width: 1px;
+    margin-top:15px;
+}
+
+#data-validation-message {
+    margin-top: 10px;
+    margin-bottom:10px;
+    color:red;
+}
+
+#left-side-panel {
+    margin-left: 20px;
+}
+
+.row1Columns {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.clientPanelButtons {
+    margin-bottom: 10px;
+}
+#data-validation-message-registration {
+    color: red;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+#row1 {
+    margin-top: 0px;
+    padding-top:0;
+    background-image: url("../images/upCloseLawn3.jpg");
+}
+
+#pageHeader, #pageJumbotron {
+    margin-bottom: 0;
+    margin-right:0;
+    padding-right:0;
+}
+
+#providerRegJumbo {
+    margin-bottom:0;
+}
+
+#row4 {
+    margin-top: 20px;
+}
+
+#row5, #row6 {
+    margin-top:40px;
+}
+
+#howToNumber1, #howToNumber3 {
+    font-size:100px;
+    font-weight: bolder;
+    color: rgb(125, 247, 165);
+    text-align:center;
+    padding:0;
+}
+
+#howToTitle1, #howToTitle3 {
+    margin-left: 5px;
+    font-size:26px;
+    font-weight: bold;
+}
+
+#howToInfo1, #howToInfo3 {
+    margin-left:5px;
+}
+
+#howToPicture1, #howToPicture3 {
+    margin-left:5px;
+}
+
+#howToPicture2 {
+    margin-right:5px;
+}
+
+.howToImages {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#howToNumber2 {
+    font-size:100px;
+    font-weight: bolder;
+    color: rgb(125, 247, 165);
+    text-align:center;
+    padding: 0;
+}
+
+.howToText {
+    color: whitesmoke;
+}
+
+#howToTitle2 {
+    margin-left:5px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+#row3 {
+    margin-top:50px;
+}
+
+#row2 {
+    margin-top:30px;
+    background-color: rgb(241, 238, 238);
+}
+
+#column1, #column2, #column3 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#rowToHoldContainer {
+    background-color: black;
+    margin-top:0;
+}
+
+#leftSidePanel {
+    margin-top:20px;
+}
+
+#landingPage {
+    background-image: url("../images/upCloseLawn2.jpg");
+    margin-top: 0px;
+    margin-bottom:0px;
+    margin-left:0px;
+    margin-right:0px;
+    background-position: center;
+    max-width: 100%;
+    max-height:100%;
+    padding-top: 0px; 
+    padding-bottom: 0px; 
+    padding-right: 0px; 
+    padding-left: 0;
+    display:flex;
+    min-width:100%;
+    min-height:100%;
+    object-fit:cover;
+}
+
+#providerlandingpagejumbo {
+    margin-bottom:0;
+}
+
+.jumbo {
+    background-color: rgb(75, 72, 72);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: rgb(230, 225, 225);
+    margin-top:0;
+    margin-bottom:0;
+}
+
+#placeholderForLandingPageDisplay {
+    color:rgb(121, 117, 117);
+    margin-left:0px;
+    margin-right: 0px;
+}
+
+#holderForProfileDisplay {
+    display:none;
+}
+
+#holderForCalendarDisplay {
+    display:none;
+}
+
+#holderForInboxDisplay {
+    display:none;
+}
+
+#holderForUpcomingJobsDisplay {
+    display:none;
+}
+
+#holderForRequestsDisplay {
+    display:none;
+}
+
+#holderForPayments {
+    display:none;
+}
+
+#footer {
+    margin-top:0px;
+}
+
+.card-footer {
+    margin-top:0;
+}
+
+.profileAnswers {
+    background-color: rgb(75, 72, 72); 
+    font-size:22px; 
+    color: white;
+    margin-top:10px
+}
+
+.profileCategories {
+    font-size:24px;
+}
