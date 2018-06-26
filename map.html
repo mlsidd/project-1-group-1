@@ -3,15 +3,14 @@
     <head>
         <title>map implementation playground</title>
         <style>
-            /* Always set the map height explicitly to define the size of the div
-             * element that contains the map. */
+            
             #main_page_map {
               
               height: 90%;
               width: 90%;
               margin:auto auto;
             }
-            /* Optional: Makes the sample page fill the window. */
+            
             html, body {
               height: 100%;
               margin: 0;
@@ -25,7 +24,7 @@
 
 
         <div id="main_page_map"></div>
-        <input id="addy" type="text" placeholder="enter your address">
+        <input id="addy" type="text" placeholder="enter your address" onfocus="geolocate()">
 
 
    <!--  
