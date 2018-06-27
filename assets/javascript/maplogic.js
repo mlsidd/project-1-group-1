@@ -19,7 +19,7 @@ var a
     method:"GET",
     url:qurl
 }).then(function(result){
-  dataRef.ref("svcproviders").on("value", function(snapshot){
+  dataRef.ref("svcproviders").once("value", function(snapshot){
     console.log(snapshot.val());
     providers = snapshot.val();
     
@@ -64,7 +64,6 @@ useraddy.setContent(a.results[0].formatted_address);
 useraddy.open(map);
 
 
-dataRef.ref("svcproviders").off("value");
 
 });
 });
@@ -141,7 +140,7 @@ async function initialize_landing_page_map()
             method:"GET",
             url:qurl
         }).then(function(result){
-          dataRef.ref("svcproviders").on("value", function(snapshot){
+          dataRef.ref("svcproviders").once("value", function(snapshot){
             console.log(snapshot.val());
             providers = snapshot.val();
             
@@ -186,7 +185,6 @@ async function initialize_landing_page_map()
         useraddy.open(map);
         
         
-        dataRef.ref("svcproviders").off("value");
         
         });
         });
