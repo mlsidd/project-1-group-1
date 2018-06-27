@@ -36,7 +36,9 @@ $("#create_client_account").on("click", function(event) {
     } else if (clientUserName.indexOf("@") == -1) {
         $("#data-validation-message").text("Make sure you are entering your email");
     } else if(clientUserName.indexOf("@") > 0 && clientPassword.length > 6) {
-        window.location.href = "./Register-Client.html";
+        localStorage.setItem("email",clientUserName);
+        localStorage.setItem("pass",clientPassword);
+        window.location.href = "./Registration-Client.html";
     }
     console.log(clientUserName);
     console.log(clientPassword);
@@ -62,40 +64,31 @@ $("#create_client_account").on("click", function(event) {
 
 
 
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyDFhTiBSjTaFH-bYZdHI5v_FRS3nE76adk",
-    authDomain: "thp1g1-1529168178742.firebaseapp.com",
-    databaseURL: "https://thp1g1-1529168178742.firebaseio.com",
-    projectId: "thp1g1-1529168178742",
-    storageBucket: "thp1g1-1529168178742.appspot.com",
-    messagingSenderId: "293280499251"
-  };
-  firebase.initializeApp(config);
-  
-  var dataRef = firebase.database();
-
     // Push client data to Firebase
-    dataRef.ref().push({
+    let object = {
     
-    usertype: "client",
-    username: clientUserName,
-    password: clientPassword,
-    firstname: clientFirst,
-    lastname: clientLast,
-    address: address,
-    address2: address2,
-    state: state,
-    city: city,
-    zip: zip,
-    phone: phone,
-    sqft: squareFootage,
-    servicesneeded: [servicesNeeded1, servicesNeeded2, servicesNeeded3],
-    //coordinateslat: coordinatesLat,
-    //coordianteslong: coordinatesLong, 
-    //calendar: , //need to figure this out
-    dateAdded: firebase.database.ServerValue.TIMESTAMP
-    });
+        usertype: "client",
+        username: localStorage.getItem("email"),
+        password: localStorage.getItem("pass"),
+        firstname: clientFirst,
+        lastname: clientLast,
+        address: address,
+        address2: address2,
+        state: state,
+        city: city,
+        zip: zip,
+        phone: phone,
+        sqft: squareFootage,
+        servicesneeded: [servicesNeeded1, servicesNeeded2, servicesNeeded3],
+        //coordinateslat: coordinatesLat,
+        //coordianteslong: coordinatesLong, 
+        //calendar: , //need to figure this out
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+        }
+    // Push client data to Firebase
+    dataRef.ref("clients").push(object);
+    
+    
 
     if (clientFirst.length < 1) {
         $("#data-validation-message-registration").append("Enter your first name");
@@ -122,3 +115,50 @@ var config = {
     console.log(clientFirst);
     console.log(servicesNeeded1, servicesNeeded2,  servicesNeeded3)
    });
+
+
+
+
+
+
+
+
+
+
+      //need function that grabs user data after login/when info is needed this doesnt work yet without an associated index array
+   
+      function grab_user_data()
+      {    
+       let obj;  
+      let uname;
+      let uaddy;
+      let uservices;
+      let usqft;
+      let dataRef=firebase.database();
+      
+          dataRef.ref("clients").on("value", function(snapshot){
+       console.log(snapshot.val());
+               let temp = snapshot.val();
+              
+               
+               for(let i=0;i<client_index.length;i++){
+                   c=client_index[i];
+               if(temp[c].username==localStorage.getItem("email")&&temp[c].password==localStorage.getItem("pass"))
+               {
+               uname=temp[c].username;
+               uaddy=temp[c].address+" "+temp[c].city+" "+temp[c].state+" "+temp[c].zip;
+               usqft=temp[c].sqft;
+               uservices=temp[c].servicesNeeded;
+               }    
+               
+           }
+              obj=     {username:uname,
+                   address:uaddy,
+                   servicesneeded:uservices,
+                   sqft:usqft};
+               
+               console.log(obj);
+           });
+           
+               return obj;
+      }
