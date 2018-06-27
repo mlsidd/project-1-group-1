@@ -21,31 +21,31 @@ var servicesNeeded = [];
 //IF user is going to use facebook to sign up
 //------------------enter code here for using facebook API--------------------------
 
-   // Capture Button Click
-$("#create_client_account").on("click", function(event) {
+// Capture Button Click
+$("#create_client_account").on("click", function (event) {
     event.preventDefault();
 
     // Get the user's data from the input boxes for Firebase database.
     clientUserName = $("#email-input").val().trim();
     clientPassword = $("#password-input").val().trim();
     // form validation
-    if(clientUserName.indexOf("@") == -1 && clientPassword.length < 7) {
-        $("#data-validation-message").html("Make sure you are entering your email <p> Password must contain at least 7 characters");        
+    if (clientUserName.indexOf("@") == -1 && clientPassword.length < 7) {
+        $("#data-validation-message").html("Make sure you are entering your email <p> Password must contain at least 7 characters");
     } else if (clientPassword.length < 7) {
         $("#data-validation-message").text("Password must contain at least 7 characters");
     } else if (clientUserName.indexOf("@") == -1) {
         $("#data-validation-message").text("Make sure you are entering your email");
-    } else if(clientUserName.indexOf("@") > 0 && clientPassword.length > 6) {
-        localStorage.setItem("email",clientUserName);
-        localStorage.setItem("pass",clientPassword);
+    } else if (clientUserName.indexOf("@") > 0 && clientPassword.length > 6) {
+        localStorage.setItem("email", clientUserName);
+        localStorage.setItem("pass", clientPassword);
         window.location.href = "./Registration-Client.html";
     }
     console.log(clientUserName);
     console.log(clientPassword);
 });
 
-   // Capture Button Click
-   $("#create-client-profile").on("click", function(event) {
+// Capture Button Click
+$("#create-client-profile").on("click", function (event) {
     event.preventDefault();
 
     // Get values from input boxes
@@ -66,7 +66,7 @@ $("#create_client_account").on("click", function(event) {
 
     // Push client data to Firebase
     let object = {
-    
+
         usertype: "client",
         username: localStorage.getItem("email"),
         password: localStorage.getItem("pass"),
@@ -84,37 +84,37 @@ $("#create_client_account").on("click", function(event) {
         //coordianteslong: coordinatesLong, 
         //calendar: , //need to figure this out
         dateAdded: firebase.database.ServerValue.TIMESTAMP
-        }
+    }
     // Push client data to Firebase
     dataRef.ref("clients").push(object);
-    
-    
+
+
 
     if (clientFirst.length < 1) {
         $("#data-validation-message-registration").append("Enter your first name");
     } if (clientLast.length < 1) {
         $("#data-validation-message-registration").append("<p> Enter your last name");
-    } if(address.length < 1) {
+    } if (address.length < 1) {
         $("#data-validation-message-registration").append("<p> Enter your address");
-    } if(state.length < 3) {
+    } if (state.length < 3) {
         $("#data-validation-message-registration").append("<p> Make sure you select your state");
-    } if(city.length < 1) {
+    } if (city.length < 1) {
         $("#data-validation-message-registration").append("<p> Make sure you select your city");
-    } if(zip.length < 5 || zip.length > 5) {
+    } if (zip.length < 5 || zip.length > 5) {
         $("#data-validation-message-registration").append("<p> Enter a valid zip code");
-    } if(phone.length < 10 || phone.length > 10) {
+    } if (phone.length < 10 || phone.length > 10) {
         $("#data-validation-message-registration").append("<p> Enter a valid phone number");
-    } if(squareFootage.length < 1) {
+    } if (squareFootage.length < 1) {
         $("#data-validation-message-registration").append("<p> Make sure you enter the square footage of your lawn");
-    } if($("#mowing").prop('checked') == false && $("#trimBushes").prop('checked') == false && $("#edging").prop('checked') == false) {
+    } if ($("#mowing").prop('checked') == false && $("#trimBushes").prop('checked') == false && $("#edging").prop('checked') == false) {
         $("#data-validation-message-registration").append("Make sure to select at least 1 service");
-    } else if(clientFirst.length > 1 && clientLast.length > 1 && address.length > 1 && state.length > 3 && city.length > 1 && zip.length == 5 && phone.length == 10 && squareFootage.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true)) {
+    } else if (clientFirst.length > 1 && clientLast.length > 1 && address.length > 1 && state.length > 3 && city.length > 1 && zip.length == 5 && phone.length == 10 && squareFootage.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true)) {
         window.location.href = "./ClientLandingPage.html";
     }
 
     console.log(clientFirst);
-    console.log(servicesNeeded1, servicesNeeded2,  servicesNeeded3)
-   });
+    console.log(servicesNeeded1, servicesNeeded2, servicesNeeded3)
+});
 
 
 
@@ -123,42 +123,59 @@ $("#create_client_account").on("click", function(event) {
 
 
 
-      //need function that grabs user data after login/when info is needed this doesnt work yet without an associated index array
-   
-      function grab_user_data()
-      {    
-       let obj;  
-      let uname;
-      let uaddy;
-      let uservices;
-      let usqft;
-      let dataRef=firebase.database();
-      
-          dataRef.ref("clients").on("value", function(snapshot){
-       console.log(snapshot.val());
-               let temp = snapshot.val();
-              
-               
-               for(let c in temp){
-                
-               if(temp[c].username==localStorage.getItem("email")&&temp[c].password==localStorage.getItem("pass"))
-               {
-               uname=temp[c].username;
-               uaddy=temp[c].address+" "+temp[c].city+" "+temp[c].state+" "+temp[c].zip;
-               usqft=temp[c].sqft;
-               uservices=temp[c].servicesNeeded;
-               }    
-               
-           }
-              obj=     {username:uname,
-                   address:uaddy,
-                   servicesneeded:uservices,
-                   sqft:usqft};
-               
-               console.log(obj);
-           });
-           
-               return obj;
-               dataRef.ref("clients").off("value");
-      }
+//need function that grabs user data after login/when info is needed this doesnt work yet without an associated index array
 
+function grab_user_data() {
+    let obj;
+    let uname;
+    let uaddy;
+    let uservices;
+    let usqft;
+    let dataRef = firebase.database();
+    let ndx;
+
+
+dataRef.ref("clients").on("value", function (snapshot) {
+        console.log(snapshot.val());
+        let temp = snapshot.val();
+
+        let b = Object.keys(temp);
+        let iteration = 0;
+        for (let c in temp) {
+
+            if (temp[c].username == localStorage.getItem("email") && temp[c].password == localStorage.getItem("pass")) {
+                uname = temp[c].username;
+                uaddy = temp[c].address + " " + temp[c].city + " " + temp[c].state + " " + temp[c].zip;
+                usqft = temp[c].sqft;
+                uservices = temp[c].servicesNeeded;
+                console.log(temp[c]);
+                console.log("this is a key " + c);
+                ndx = b[iteration];
+            }
+            iteration++;
+        }
+        obj = {
+            username: uname,
+            address: uaddy,
+            servicesneeded: uservices,
+            sqft: usqft,
+            userKey: ndx
+        };
+
+        console.log(obj);
+    });
+
+    
+
+
+    //dataRef.ref("clients").off("value");
+    
+    console.log("test");
+    return obj;
+
+}
+
+function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
