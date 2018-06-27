@@ -123,8 +123,6 @@ $("#create_client_account").on("click", function(event) {
 
 
 
-
-
       //need function that grabs user data after login/when info is needed this doesnt work yet without an associated index array
    
       function grab_user_data()
@@ -141,8 +139,8 @@ $("#create_client_account").on("click", function(event) {
                let temp = snapshot.val();
               
                
-               for(let i=0;i<client_index.length;i++){
-                   c=client_index[i];
+               for(let c in temp){
+                
                if(temp[c].username==localStorage.getItem("email")&&temp[c].password==localStorage.getItem("pass"))
                {
                uname=temp[c].username;
@@ -162,3 +160,5 @@ $("#create_client_account").on("click", function(event) {
            
                return obj;
       }
+
+      
