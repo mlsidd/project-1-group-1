@@ -159,6 +159,6 @@ $("#create_client_account").on("click", function(event) {
            });
            
                return obj;
+               dataRef.ref("clients").off("value");
       }
 
-      
