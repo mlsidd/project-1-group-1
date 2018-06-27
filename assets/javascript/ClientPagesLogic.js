@@ -127,6 +127,8 @@ $("#create-client-profile").on("click", function (event) {
 // var user = await grab_user_data()
 
 // returns an object.
+//user.userKey returns the key that this user is stored in. should be useful for quick refrencing.
+
 
 
    async function grab_user_data() {
@@ -138,7 +140,7 @@ $("#create-client-profile").on("click", function (event) {
 
     let temp = await dataRef.ref("clients").once("value").then(function(snapshot){return snapshot.val();})
 
- console.log(temp);
+
 
         //let b = Object.keys(temp);
         //let iteration = 0;
@@ -146,6 +148,9 @@ $("#create-client-profile").on("click", function (event) {
 
             if (temp[c].username == localStorage.getItem("email") && temp[c].password == localStorage.getItem("pass")) {
                 obj={
+                firstname: temp[c].firstname,
+                lastname: temp[c].lastname,
+                phone: temp[c].phone,
                 username: temp[c].username,
                 address: temp[c].address + " " + temp[c].city + " " + temp[c].state + " " + temp[c].zip,
                 sqft: temp[c].sqft,
