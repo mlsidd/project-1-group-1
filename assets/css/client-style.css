@@ -1,4 +1,8 @@
-
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 #orOption {
     margin-top: 30px;
     margin-bottom:10px;
@@ -71,4 +75,11 @@ body {
     color: red;
     margin-top:20px;
     margin-bottom: 20px;
+}
+
+#clp_map{
+    position:absolute;
+    right:5%;
+    height:60%;
+    width: 60%;
 }

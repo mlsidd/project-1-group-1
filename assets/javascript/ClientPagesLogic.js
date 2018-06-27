@@ -122,60 +122,49 @@ $("#create-client-profile").on("click", function (event) {
 
 
 
+//how to use...
 
-//need function that grabs user data after login/when info is needed this doesnt work yet without an associated index array
+// var user = await grab_user_data()
 
-function grab_user_data() {
-    let obj;
-    let uname;
-    let uaddy;
-    let uservices;
-    let usqft;
+// returns an object.
+//user.userKey returns the key that this user is stored in. should be useful for quick refrencing.
+
+
+
+   async function grab_user_data() {
+    
+ 
     let dataRef = firebase.database();
-    let ndx;
+   
 
 
-dataRef.ref("clients").on("value", function (snapshot) {
-        console.log(snapshot.val());
-        let temp = snapshot.val();
+    let temp = await dataRef.ref("clients").once("value").then(function(snapshot){return snapshot.val();})
 
-        let b = Object.keys(temp);
-        let iteration = 0;
+
+
+        //let b = Object.keys(temp);
+        //let iteration = 0;
         for (let c in temp) {
 
             if (temp[c].username == localStorage.getItem("email") && temp[c].password == localStorage.getItem("pass")) {
-                uname = temp[c].username;
-                uaddy = temp[c].address + " " + temp[c].city + " " + temp[c].state + " " + temp[c].zip;
-                usqft = temp[c].sqft;
-                uservices = temp[c].servicesNeeded;
-                console.log(temp[c]);
-                console.log("this is a key " + c);
-                ndx = b[iteration];
+                obj={
+                firstname: temp[c].firstname,
+                lastname: temp[c].lastname,
+                phone: temp[c].phone,
+                username: temp[c].username,
+                address: temp[c].address + " " + temp[c].city + " " + temp[c].state + " " + temp[c].zip,
+                sqft: temp[c].sqft,
+                servicesneeded: temp[c].servicesNeeded,
+                userKey: c
+                };
             }
-            iteration++;
+          
         }
-        obj = {
-            username: uname,
-            address: uaddy,
-            servicesneeded: uservices,
-            sqft: usqft,
-            userKey: ndx
-        };
-
-        console.log(obj);
-    });
-
-    
+   
 
 
-    //dataRef.ref("clients").off("value");
-    
-    console.log("test");
     return obj;
 
 }
 
-function sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
-}
+
