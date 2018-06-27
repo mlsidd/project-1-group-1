@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>LawnLanwLand - Messages</title>
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    
+    <!-- Moment.js Reference -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="chatstyle.css">
+
+</head>
+
+
+<body>
+
+        <header>
+
+            <a type="button" class="btn btn-outline-secondary btn-md" a href="index.html">Home</a>
+            <h1>Beutify Your Green </h1>
+    
+        </header>
+    <div class="container">
+
+
+        <!---  OLD NAVIGATION 
+        <nav>
+        <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo">Brand Baby! Brand!</a>
+
+            <a href="#" class="sidenav-trigger" data-target="mobile-nav">
+                <i class="material-icons">menu</i>
+            </a>
+                <ul class="right hide-on-med-and-down">
+                    <li class=""><a href="search.html" class="#" id="">Search</a></li>
+                    <li class=""><a href="news.html" class="" id="">News</a></li>
+                    <li class=""><a href="about.html" class="" id="">About</a></li>
+                    <li class=""><a href="profile.html" class="" id="">My Profile</a></li>
+                    <li class=""><a href="cart.html" class="" id="">Cart</a></li>
+                </ul>
+        </div>
+        </nav>
+            <ul class="sidenav" id="mobile-nav">
+                <li class=""><a href="search.html" class="#" id="">Search</a></li>
+                <li class=""><a href="news.html" class="" id="">News</a></li>
+                <li class=""><a href="about.html" class="" id="">About</a></li>
+                <li class=""><a href="profile.html" class="" id="">My Profile</a></li>
+                <li class=""><a href="cart.html" class="" id="">Cart</a></li>
+            </ul>
+         Navigation Ends-->
+        
+
+        <div class="msg-container">
+            <div class="header"><h3>Messenge Center</h3></div>
+            <div class="msg-area" id="msg-area"></div>
+                <table class="msgs" id="msgs">
+                    <th>From</th>
+                    <th>Date</th>
+                    <th>Message</th>
+                </table>
+            <div class="bottom"><input type="text" name="msginput" id="msginput"></input></div>
+            <div class="bottom"><input type="submit" name="msgsubmit" id="msgsubmit" value="Send!"></input></div>
+        </div>
+
+
+
+    </div>
+<script src="javascript/chatLogic.js"></script>
+</body>
+<!-- -->
+</html>
