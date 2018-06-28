@@ -166,5 +166,3 @@ $("#create-client-profile").on("click", function (event) {
     return obj;
 
 }
-
-
