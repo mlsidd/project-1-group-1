@@ -1,0 +1,97 @@
+/*
+Stylesheet #1
+
+*/
+
+body {
+  /* Box-model */
+  padding: 20;
+
+  /* Positioning */
+  margin: 10;
+  font-family: Georgia, "Times New Roman", Times, serif;
+
+  /* Typography */
+
+  font-size: 18px;
+  line-height: 150%;
+  color: #333;
+
+  /* Visual */
+  background: #cfcc9b;
+    background-image: url("Landscaping Picture 2.jpg");
+  /* background-color: #cccccc; */
+}
+
+header {
+  background: #9beea0;
+}
+
+h1 {
+  /* Box-model */
+  padding: 20px 0;
+  font-family: 'Roboto', sans-serif;
+
+  /* Positioning */
+  margin: 0;
+  margin-top: 3px;
+  margin-bottom: 20px;
+  font-size: 28px;
+
+  /* Typography */
+  color: #eee;
+  text-align: center;
+
+  /* Visual */
+  background: rgb(77, 71, 71);
+}
+
+th {
+  background: #9beea0;
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+tr {
+  box-shadow: 2px 1px 1px #9beea0;
+}
+
+a {
+  color: #d21034;
+}
+
+.container {
+  /* Box-model */
+  width: 1024px;
+
+  /* Positioning */
+  margin: 20 auto;
+}
+
+.msgs {
+  background: #d0f0d3;
+  width: 1024px;
+}
+#msginput {
+  background: #fefffe;
+  width: 1024px;
+}
+
+#main {
+  width: 70%;
+}
+
+#contact-info {
+  width: 30%;
+}
+
+#image {
+  /* Box-model */
+  width: 10px;
+  height: 10px;
+
+  /* Positioning */
+  margin-right: 20px;
+}
+

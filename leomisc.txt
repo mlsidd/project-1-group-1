@@ -1,0 +1,5 @@
+have data in messages actually go to both profiles
+
+accept cached data in messages for user
+
+link to messages from the provider profile, on click will set the provider info target in firebase
