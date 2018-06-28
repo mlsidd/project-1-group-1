@@ -29,6 +29,7 @@ database.ref("clients").orderByChild("username").equalTo(user).once("value", fun
         $("#inputCity").val(childSnapshot.child("city").val());
         $("#inputState").val(childSnapshot.child("state").val());
         $("#inputZip").val(childSnapshot.child("zip").val());
+        $("#clientPhoneNumber").val(childSnapshot.child("phone").val());
         $("#squareFootage").val(childSnapshot.child("sqft").val());
 
     });
