@@ -168,7 +168,30 @@
 <script src="assets/javascript/maplogic.js"></script>
 <script src="assets/javascript/ProviderPagesLogic.js"></script>    
 <script>
+    var userinfo;
+async function login_data(){
+    userinfo = await grab_provider_data();
+}
+async function login(){
+    console.log("test");
+
+    userinfo = await grab_provider_data();
+    if(userinfo=="user not found"){
+        console.log("you shall not pass!");
+    }else{
+
+        console.log("alright, on you go!");
+        window.location.href = "./ProviderLandingPage.html";
+    }
+}
+$("#login_provider_button").on("click",function(e){
+    e.preventDefault();
+    localStorage.setItem('email',$("#email-input").val().trim());
+    localStorage.setItem('pass',$('#password-input').val().trim());
+    login();
+
     
+});
 </script>
     
 </body>

@@ -173,7 +173,7 @@ async function initialize_landing_page_map()
         for(let i=0;i<providers.length;i++)
         {  let s = providers[i] ;
           
-           scontent.push("name: "+s.name+"<br>rating: "+s.rating+"<br>about: "+s.about+"<br>price per sqft: "+s.price+"<br> number: "+s.number);
+           scontent.push("name: "+s.name+"<br>rating: "+s.rating+"<br>about: "+s.about+"<br>price per sqft: "+s.price+"<br> number: "+s.number+"<br><button class='messageprovider' id='"+s.name+"'>message</button>");
            sinfo.push( new google.maps.InfoWindow({content:scontent[i]}));
             smarker.push( new google.maps.Marker({
              position:s.coordinates,
@@ -181,7 +181,8 @@ async function initialize_landing_page_map()
              title:s.name
              
            }));
-           smarker[i].addListener('click',function(){sinfo[i].open(map,smarker[i]);});
+           smarker[i].addListener('click',function(){sinfo[i].open(map,smarker[i]);
+            $(".messageprovider").on("click",function(){sessionStorage.setItem("to",$(this).attr("id"));build_channel();window.location.href="./messages.html"})});
            console.log("testing");
         }
         
@@ -198,4 +199,71 @@ async function initialize_landing_page_map()
 
       }
 
+markerArray = new Array();
+//svp drop pin to select service area
+
+async function initialize_provider_map()
+      { var clickpos;
+        userinfo = await grab_provider_data();
+        console.log(userinfo.city);
+        qurl="https://maps.googleapis.com/maps/api/geocode/json?address="+userinfo.city+" "+userinfo.state+"&key=AIzaSyDTwlzUpyLqmmDTtdCr2wM18mYBmnnIUfE";
+ 
+        var a;
+        //json api call for address to coordinates.
+        //address= dude.address+" "+dude.city+" "+dude.state+" "+dude.zip;
+         await $.ajax({
+            method:"GET",
+            url:qurl
+        }).then(function(result){
+          a=result;
+        
+        
+          console.log(userinfo.city+" "+userinfo.state);
+          
+        addycoordinates=a.results[0].geometry.location;
+         pos = addycoordinates;
+         mapOptions={
+          center: new google.maps.LatLng(pos.lat,pos.lng),
+          
+          zoom:9
+        };
+        $("#placeholderForLandingPageDisplay").append("<div id='plp_map'></div>");
+         map = new google.maps.Map(document.getElementById('plp_map'),mapOptions);
+         
+
+        
+        
+        google.maps.event.addListener(map, 'click',async function(event){
+        clickpos = {lat:event.latLng.lat(),lng:event.latLng.lng()}
+        console.log(clickpos);
+        console.log(userinfo.userKey);
+        //firebase.database().ref("providers").child(userinfo.userKey).remove("coordinates");
+        firebase.database().ref("providers").child(userinfo.userKey).child("coordinates").set(clickpos);
+        userinfo = await grab_provider_data();
+               for(i=0; i<markerArray.length; i++){
+          markerArray[i].setMap(null);
+                }
+        markerArray.push(new google.maps.Marker({
+          position:userinfo.coordinates,
+          map:map,
+          title:"service area"}));
+ 
+
+
+       /* serviceArea = new google.maps.Marker({
+          position:userinfo.coordinates,
+          map:map,
+          title:"service area"});*/
+
+        });
+ 
+        });
+        var bool = await firebase.database().ref("providers").child(userinfo.userKey).child("coordinates").once("value",function(snapshot){return snapshot.exists();});
+        if(bool){
+          markerArray.push(new google.maps.Marker({
+            position:userinfo.coordinates,
+            map:map,
+            title:"service area"}));
+        }
+      }
 

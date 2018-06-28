@@ -40,22 +40,34 @@
     <div class="container">      
 
         <div class="msg-container">
-            <div class="header"><h3>Message Center</h3></div>
-            <div class="msg-area" id="msg-area"></div>
-                <table class="msgs" id="msgs">
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Date</th>
-                    <th>Message</th>
-                </table>
-            <div class="bottom"><input type="text" name="msginput" id="msginput"></input></div>
-            <div class="bottom"><input type="submit" name="msgsubmit" id="msgsubmit" value="Send!"></input></div>
+            <div id="messagebox"></div>
+            <hr>
+            <div class="bottom"><input type="text" name="msginput" id="messageinput"></input></div>
+            <div class="bottom"><input type="submit" name="msgsubmit" id="send" value="Send!"></input></div>
         </div>
 
 
 
     </div>
+    <script>var config = {
+            apiKey: "AIzaSyDFhTiBSjTaFH-bYZdHI5v_FRS3nE76adk",
+            authDomain: "thp1g1-1529168178742.firebaseapp.com",
+            databaseURL: "https://thp1g1-1529168178742.firebaseio.com",
+            projectId: "thp1g1-1529168178742",
+            storageBucket: "thp1g1-1529168178742.appspot.com",
+            messagingSenderId: "293280499251"
+          };
+          
+          firebase.initializeApp(config);
+          
+          var dataRef = firebase.database();
+        </script>
 <script src="javascript/chatLogic.js"></script>
 </body>
 <!-- -->
 </html>
+<script>
+
+    find_channels();
+
+</script>
