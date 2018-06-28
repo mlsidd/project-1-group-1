@@ -56,7 +56,7 @@ for(let i=0;i<providers.length;i++)
    smarker[i].addListener('click',function(){sinfo[i].open(map,smarker[i]);});
    console.log("testing");
 }
-
+console.log(a);
 
 useraddy = new google.maps.InfoWindow;
 useraddy.setPosition(pos);
@@ -119,6 +119,13 @@ var userinfo={address:""};
         // Get the place details from the autocomplete object.
         var place = autocomplete.getPlace();
         userinfo.address = place.formatted_address;
+        localStorage.setItem("address",JSON.stringify({
+          formatted:place.formatted_address,
+          street_number:place.address_components[0],
+          street_name:place.address_components[1],
+          city:place.address_components[3],
+          state:place.address_components[5],
+          zip:place.address_components[7]}));
         initialize_main_page_map();
 
       }
