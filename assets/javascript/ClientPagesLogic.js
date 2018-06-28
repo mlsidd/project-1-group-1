@@ -142,8 +142,8 @@ $("#create-client-profile").on("click", function (event) {
 
     let temp = await dataRef.ref("clients").once("value").then(function(snapshot){return snapshot.val();})
 
-
-
+    
+        let bool = false;
         //let b = Object.keys(temp);
         //let iteration = 0;
         for (let c in temp) {
@@ -159,13 +159,19 @@ $("#create-client-profile").on("click", function (event) {
                 servicesneeded: temp[c].servicesNeeded,
                 userKey: c
                 };
+                 bool=true;
             }
           
         }
    
-
-
-    return obj;
+    
+    if(bool==true)
+    {
+      return obj;  
+    }else{
+        return "user not found";
+    }
+    
 
 }
 

@@ -91,7 +91,27 @@
 
 <script src="assets/javascript/ClientPagesLogic.js"></script>
 <script>
-window.onload = loadScript("initialize_landing_page_map");
+//window.onload = loadScript("initialize_landing_page_map");
+var userinfo;
+async function login_data(){
+    userinfo = await grab_user_data();
+}
+
+$("#login_client_button").on("click",function(e){
+    e.preventDefault();
+    console.log("test");
+    localStorage.setItem('email',$("#email-input").val().trim());
+    localStorage.setItem('pass',$('#password-input').val().trim());
+    login_data();
+    if(userinfo=="user not found"){
+        console.log("you shall not pass!");
+    }else{
+
+        console.log("alright, on you go!");
+    }
+
+    
+});
 </script>   
     
 </body>
