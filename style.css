@@ -2,7 +2,11 @@
 Stylesheet #1
 
 */
-
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 body {
   /* Box-model */
   padding: 20;
@@ -20,6 +24,8 @@ body {
   /* Visual */
   background: #cfcc9b;
     background-image: url("Landscaping Picture 2.jpg");
+    background-repeat:no-repeat;
+    background-size:100%;
   /* background-color: #cccccc; */
 }
 
@@ -82,4 +88,17 @@ a {
 
   /* Positioning */
   margin-right: 20px;
+}
+
+#main_page_map {
+              
+  height: 70%;
+  width: 70%;
+  margin:auto auto;
+  
+}
+
+#addy{
+  width:60%;
+  margin:0 auto;
 }
