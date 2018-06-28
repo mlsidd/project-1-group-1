@@ -1,27 +1,44 @@
-// IF user is going to create new account...
-//----------------if else statements will start here once incluce these features-----------------
-// Get the client's user name and password from the input boxes
-var clientUserName = "";
-var clientPassword = "";
-var clientFirst = "";
-var clientLast = "";
-var address = "";
-var address2 = "";
-var city = "";
-var state = "";
-var zip = "";
-var phone = "";
-var squareFootage = 0;
-var servicesNeeded = [];
+var config = {
+apiKey: "AIzaSyDFhTiBSjTaFH-bYZdHI5v_FRS3nE76adk",
+authDomain: "thp1g1-1529168178742.firebaseapp.com",
+databaseURL: "https://thp1g1-1529168178742.firebaseio.com",
+projectId: "thp1g1-1529168178742",
+storageBucket: "thp1g1-1529168178742.appspot.com",
+messagingSenderId: "293280499251"
+};
+
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+var user = "1@2.com";
+    // FROM CACHE var user = localStorage.getItem("email");
+
+database.ref("clients").orderByChild("username").equalTo(user).once("value", function(snapshot){
+    console.log(snapshot.val(), "0");  
+    
+    snapshot.forEach(function(childSnapshot){
+
+        console.log(childSnapshot.child("firstname").val());
 
 
-// IF user is going to use google account to sign up
-//-------------------enter code here for using Google API-------------------
+        $("#clientFirstName").val(childSnapshot.child("firstname").val());
+        $("#clientLastName").val(childSnapshot.child("lastname").val());
+        $("#inputAddress").val(childSnapshot.child("address").val());
+        $("#inputAddress2").val(childSnapshot.child("address2").val());
+        $("#inputCity").val(childSnapshot.child("city").val());
+        $("#inputState").val(childSnapshot.child("state").val());
+        $("#inputZip").val(childSnapshot.child("zip").val());
+        $("#clientPhoneNumber").val(childSnapshot.child("phone").val());
+        $("#squareFootage").val(childSnapshot.child("sqft").val());
 
-//IF user is going to use facebook to sign up
-//------------------enter code here for using facebook API--------------------------
+    });
+    
 
-// Capture Button Click
+
+});
+
+
 $("#create_client_account").on("click", function (event) {
     event.preventDefault();
 
@@ -86,7 +103,7 @@ $("#create-client-profile").on("click", function (event) {
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     }
     // Push client data to Firebase
-    dataRef.ref("clients").push(object);
+    database.ref("clients56").set(object);
 
 
 
@@ -115,60 +132,3 @@ $("#create-client-profile").on("click", function (event) {
     console.log(clientFirst);
     console.log(servicesNeeded1, servicesNeeded2, servicesNeeded3)
 });
-
-
-
-
-
-
-
-//how to use...
-
-// var user = await grab_user_data()
-
-// returns an object.
-//user.userKey returns the key that this user is stored in. should be useful for quick refrencing.
-
-
-
-   async function grab_user_data() {
-    
- 
-    let dataRef = firebase.database();
-   
-
-
-    let temp = await dataRef.ref("clients").once("value").then(function(snapshot){return snapshot.val();})
-
-    
-        let bool = false;
-        //let b = Object.keys(temp);
-        //let iteration = 0;
-        for (let c in temp) {
-
-            if (temp[c].username == localStorage.getItem("email") && temp[c].password == localStorage.getItem("pass")) {
-                obj={
-                firstname: temp[c].firstname,
-                lastname: temp[c].lastname,
-                phone: temp[c].phone,
-                username: temp[c].username,
-                address: temp[c].address + " " + temp[c].city + " " + temp[c].state + " " + temp[c].zip,
-                sqft: temp[c].sqft,
-                servicesneeded: temp[c].servicesNeeded,
-                userKey: c
-                };
-                 bool=true;
-            }
-          
-        }
-   
-    
-    if(bool==true)
-    {
-      return obj;  
-    }else{
-        return "user not found";
-    }
-    
-
-}

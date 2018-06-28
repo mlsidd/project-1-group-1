@@ -19,9 +19,9 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/index.html">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="/Login-Client.html">Customer Login</a>
-                <a class="nav-item nav-link" href="/Login-Provider.html">Provider Login</a>
+                <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="Login-Client.html">Customer Login</a>
+                <a class="nav-item nav-link" href="Login-Provider.html">Provider Login</a>
             </div>
         </div>
     </nav>      
@@ -34,13 +34,15 @@
 
           <div class="col-md-4 offset-1">
             <div class="btn-group-vertical" id="buttonPanel">
+
                     <br>
                     <br>
                     <br>
-                    <button type="button" class="btn btn-info btn-lg clientPanelButtons">My Profile</button> 
-                    <button type="button" class="btn btn-info btn-lg clientPanelButtons">Inbox</button> 
-                    <button type="button" class="btn btn-info btn-lg clientPanelButtons">Map</button>           
-                    <button type="button" class="btn btn-info btn-lg clientPanelButtons">Calendar</button>                      
+                    <a href="profile-update.html"><button type="button" class="btn btn-info btn-lg clientPanelButtons">My Profile</button></a> 
+                    <a href="messages.html"><button type="button" class="btn btn-info btn-lg clientPanelButtons">Inbox</button></a>
+                    <a href="map.html"><button type="button" class="btn btn-info btn-lg clientPanelButtons">Map</button></a>
+                    <a href="calendar.html"><button type="button" class="btn btn-info btn-lg clientPanelButtons">Calendar</button></a>                     
+
             </div>
         </div>
         
@@ -64,7 +66,6 @@
     projectId: "thp1g1-1529168178742",
     storageBucket: "thp1g1-1529168178742.appspot.com",
     messagingSenderId: "293280499251"
-
   };
   
   firebase.initializeApp(config);
@@ -73,8 +74,6 @@
 </script>
 <script src="assets/javascript/maplogic.js"></script>
 <script src="assets/javascript/ClientPagesLogic.js"></script>
-   <script>
-   window.onload = loadScript("initialize_landing_page_map");
-   </script>
+
 </body>
 </html>
