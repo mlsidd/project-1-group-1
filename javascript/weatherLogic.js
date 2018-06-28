@@ -1,94 +1,58 @@
-// Initialize Firebase
-var config = {
-apiKey: "AIzaSyDFhTiBSjTaFH-bYZdHI5v_FRS3nE76adk",
-authDomain: "thp1g1-1529168178742.firebaseapp.com",
-databaseURL: "https://thp1g1-1529168178742.firebaseio.com",
-projectId: "thp1g1-1529168178742",
-storageBucket: "thp1g1-1529168178742.appspot.com",
-messagingSenderId: "293280499251"
-};
-firebase.initializeApp(config);
-var database = firebase.database();
 
-console.log(moment());
+$(document).ready(function () {
+
+    var lat;
+    var lon;
+    var api_url;
+
+    if ("geolocation" in navigator) {
+
+        navigator.geolocation.getCurrentPosition(gotLocation);
+
+        function gotLocation(position) {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+
+            api_url = 'https://api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=' +
+                lat + '&lon=' +
+                lon + '&cnt=16&appid=b231606340553d9174136f7f083904b3';
+
+            $.ajax({
+                url: api_url,
+                method: 'GET',
+                success: function (data) {
+
+                    for (i = 0; i < 16; i++) {
+                        let info = data.list
+                        console.log(info[i])
+
+                        var day = new Date (info[i].dt);
+                        var rain = info[i].weather[0].main;
+                        var rainType = info[i].weather[0].description;
+                        var icon = info[i].weather[0].icon;
+                        var iconSrc = "http://openweathermap.org/img/w/" + icon + ".png"
+                        var tempHi = Math.floor(info[i].temp.max - 273);
+                        var tempLow = Math.floor(info[i].temp.min - 273);
+
+                        console.log(day)
+                        $('#result').append("<tr><td>" +
+                            day + "</td><td>" +
+                            rain + "</td><td>" +
+                            rainType + "</td><td>" +
+                            tempHi + "</td><td>" +
+                            tempLow + "</td><td>" +
+                            "<img src=" + iconSrc + "></td></tr>"
+                        );
+                    }
+
+                }
+            });
+        }
+    } else {
+        $(".container").empty();
+        $(".container").append("<h3>" + "Sorry, your browser does not support this feature." + "</h3>");
+    }
 
 
-// Messaging
 
-var message = $("#msginput").innerHtml;
-var messageTo = $("#msgto").innerHtml;
-
-
-var defaultAuth = firebase.auth();
-var time = moment()._d;
-var user = "user@email.com";
-    // FROM CACHE var user = localStorage.getItem("email");
-var recipient = "-LFuLd4dtAHtFcUwQjok";
-    //Will be replaced with provider data on selection
-
-
-$(document).ready(function(){
-    database.ref("clients").child("messages").on("value", function(snapshot){
-    console.log(snapshot.val());
 });
-
-})
-
-database.ref("clients").orderByChild("username").equalTo(user).on("value", function(snapshot){
-console.log(snapshot.val(), "0");
-let x = snapshot.val();
-console.log(x)
-
-
-snapshot.forEach(function(childSnapshot){
- console.log(snapshot.val());
-
-let user = childSnapshot.child("servicesneeded").child("0").val();
-let time = childSnapshot.child("servicesneeded").child("1").val();
-let msg = childSnapshot.child("servicesneeded").child("2").val();
-
- $("#msgs").append( "<tr><td>" + user
- + "</td><td>" + time
- + "</td><td>" + msg
- + "</td></tr>" 
-);
-})
-
-})
-
-$("#msgsubmit").on("click", function(){
-event.preventDefault();
-let msg = $("#msginput").val().trim();
-
-
-    database.ref("clients").orderByChild("username").equalTo(user).on("value", function(snapshot){
-        let here = (snapshot.val());
-        console.log(here);
-        database.ref("here").push({
-            sent_or_received : "sent",
-            recipient : recipient,
-            sender : user,
-            message : msg,
-            timestamp : time
-        });
-    });
-    database.ref("svcproviders").child(recipient).push({
-        sent_or_received : "recieved",
-        recipient : recipient,
-        sender : user,
-        message : msg,
-        timestamp : time
-        });
-
-    $("#msgs").append( "<tr><td>" + user
-        + "</td><td>" + time
-        + "</td><td>" + msg
-        + "</td></tr>" 
-    );
-
-
-    $('#msginput')
-    .not(':button, :submit, :reset, :hidden')
-    .val('')
-});
-

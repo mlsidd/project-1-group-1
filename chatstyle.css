@@ -73,9 +73,15 @@ a {
   background: #d0f0d3;
   width: 1024px;
 }
+
 #msginput {
   background: #fefffe;
   width: 1024px;
+}
+
+#results {
+  background: #d0f0d3;
+  width: auto;
 }
 
 #main {
