@@ -19,10 +19,10 @@
     <header>
 
         <button type="button" class="btn btn-outline-secondary btn-md">Sell Service</button>
-        <a type="button" class="btn btn-outline-secondary btn-md" href="Login-Client.html">Need Service</a>
+        <a type="button" class="btn btn-outline-secondary btn-md" a href="Login-Client.html">Need Service</a>
         <a type="button" class="btn btn-outline-secondary btn-md" id="weather" href="weather.html" onclick="window.open(this.href, 'mywin',
-        'left=20,top=20,width=750,height=1000,toolbar=1,resizable=0'); return false;" >Weather Checker</a>
-        <h1>Beautify Your Green </h1>
+'left=20,top=20,width=750,height=1000,toolbar=1,resizable=0'); return false;" >Weather Checker</a>
+        <h1>Beutify Your Green </h1>
 
     </header>
 
@@ -37,28 +37,36 @@
         <form>
             <div class="form-inline form-group">
                 <label for="formInput"></label>
-                <input type="address" class="form-control" id="formInput" placeholder="Enter your address here">
-                <button id="enterButton" type="button" class="btn btn-secondary btn-md">Enter</button>
+                <input id="addy" type="text" class="form-control" placeholder="Enter your address here" onfocus="initAutocomplete()">
+                
             </div>
-
-            <div class="map">
-
-                <script type="text/javascript">
-
-
-                </script>
-
-            </div>
-
+            
         </form>
-
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+    </div>
+    <div id="main_page_map"></div>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script>
+            var config = {
+        apiKey: "AIzaSyDFhTiBSjTaFH-bYZdHI5v_FRS3nE76adk",
+        authDomain: "thp1g1-1529168178742.firebaseapp.com",
+        databaseURL: "https://thp1g1-1529168178742.firebaseio.com",
+        projectId: "thp1g1-1529168178742",
+        storageBucket: "thp1g1-1529168178742.appspot.com",
+        messagingSenderId: "293280499251"
+      };
+      
+      firebase.initializeApp(config);
+      </script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
             crossorigin="anonymous"></script>
+            <script type"text/javascript" src="assets/javascript/maplogic.js"></script>
+            <script>
+            window.onload = loadScript("initAutocomplete");
+            </script>
 </body>
 
 </html>
+
