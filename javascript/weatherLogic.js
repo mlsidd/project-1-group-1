@@ -13,7 +13,7 @@ $(document).ready(function () {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
 
-            api_url = 'https://api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=' +
+            api_url = 'https://api.openweathermap.org/data/2.5/forecast/daily?lat=' +
                 lat + '&lon=' +
                 lon + '&cnt=16&appid=b231606340553d9174136f7f083904b3';
 
@@ -26,7 +26,7 @@ $(document).ready(function () {
                         let info = data.list
                         console.log(info[i])
 
-                        var day = new Date (info[i].dt);
+                        var day = moment(info[i].dt).format('MMMM Do YYYY, h:mm:ss a');
                         var rain = info[i].weather[0].main;
                         var rainType = info[i].weather[0].description;
                         var icon = info[i].weather[0].icon;

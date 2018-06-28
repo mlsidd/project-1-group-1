@@ -34,7 +34,7 @@ $(document).ready(function(){
 
 })
 
-database.ref("clients").child("messages").orderByChild("sender").equalTo(user).once("value", function(snapshot){
+database.ref("messages").orderByChild("sender").equalTo(user).once("value", function(snapshot){
 console.log(snapshot.val(), "0");
 let x = snapshot.val();
 console.log(x)
@@ -70,7 +70,7 @@ let msg = $("#msginput").val().trim();
         console.log(key);
 
 
-        database.ref("clients").child("messages").push({
+        database.ref("messages").push({
             key : key,
             sent_or_received : "sent",
             recipient : recipient,
@@ -88,6 +88,7 @@ let msg = $("#msginput").val().trim();
         });
 
     $("#msgs").append( "<tr><td>" + user
+        + "</td><td>" + recipient
         + "</td><td>" + time
         + "</td><td>" + msg
         + "</td></tr>" 
