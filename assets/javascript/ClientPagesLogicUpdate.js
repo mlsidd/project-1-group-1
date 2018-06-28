@@ -11,7 +11,7 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-var user = "1@2.com";
+var user = "3@4.com";
     // FROM CACHE var user = localStorage.getItem("email");
 
 database.ref("clients").orderByChild("username").equalTo(user).once("value", function(snapshot){
@@ -64,71 +64,78 @@ $("#create_client_account").on("click", function (event) {
 // Capture Button Click
 $("#create-client-profile").on("click", function (event) {
     event.preventDefault();
+        
+    database.ref("clients").orderByChild("username").equalTo(user).once("value", function(snapshot){
+        let here = snapshot.val();
+        let key = Object.keys(snapshot.val())[0];
+        console.log(key);
+            
 
-    // Get values from input boxes
-    clientFirst = $("#clientFirstName").val().trim();
-    clientLast = $("#clientLastName").val().trim();
-    address = $("#inputAddress").val().trim();
-    address2 = $("#inputAddress2").val().trim();
-    city = $("#inputCity").val().trim();
-    state = $("#inputState").val().trim();
-    zip = $("#inputZip").val().trim();
-    phone = $("#clientPhoneNumber").val().trim();
-    squareFootage = $("#squareFootage").val().trim();
-    servicesNeeded1 = $("#mowing").val();
-    servicesNeeded2 = $("#edging").val();
-    servicesNeeded3 = $("#trimBushes").val();
-
-
-
-    // Push client data to Firebase
-    let object = {
-
-        usertype: "client",
-        username: localStorage.getItem("email"),
-        password: localStorage.getItem("pass"),
-        firstname: clientFirst,
-        lastname: clientLast,
-        address: address,
-        address2: address2,
-        state: state,
-        city: city,
-        zip: zip,
-        phone: phone,
-        sqft: squareFootage,
-        servicesneeded: [servicesNeeded1, servicesNeeded2, servicesNeeded3],
-        //coordinateslat: coordinatesLat,
-        //coordianteslong: coordinatesLong, 
-        //calendar: , //need to figure this out
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
-    }
-    // Push client data to Firebase
-    database.ref("clients56").set(object);
+            // Get values from input boxes
+            clientFirst = $("#clientFirstName").val().trim();
+            clientLast = $("#clientLastName").val().trim();
+            address = $("#inputAddress").val().trim();
+            address2 = $("#inputAddress2").val().trim();
+            city = $("#inputCity").val().trim();
+            state = $("#inputState").val().trim();
+            zip = $("#inputZip").val().trim();
+            phone = $("#clientPhoneNumber").val().trim();
+            squareFootage = $("#squareFootage").val().trim();
+            servicesNeeded1 = $("#mowing").val();
+            servicesNeeded2 = $("#edging").val();
+            servicesNeeded3 = $("#trimBushes").val();
 
 
 
-    if (clientFirst.length < 1) {
-        $("#data-validation-message-registration").append("Enter your first name");
-    } if (clientLast.length < 1) {
-        $("#data-validation-message-registration").append("<p> Enter your last name");
-    } if (address.length < 1) {
-        $("#data-validation-message-registration").append("<p> Enter your address");
-    } if (state.length < 3) {
-        $("#data-validation-message-registration").append("<p> Make sure you select your state");
-    } if (city.length < 1) {
-        $("#data-validation-message-registration").append("<p> Make sure you select your city");
-    } if (zip.length < 5 || zip.length > 5) {
-        $("#data-validation-message-registration").append("<p> Enter a valid zip code");
-    } if (phone.length < 10 || phone.length > 10) {
-        $("#data-validation-message-registration").append("<p> Enter a valid phone number");
-    } if (squareFootage.length < 1) {
-        $("#data-validation-message-registration").append("<p> Make sure you enter the square footage of your lawn");
-    } if ($("#mowing").prop('checked') == false && $("#trimBushes").prop('checked') == false && $("#edging").prop('checked') == false) {
-        $("#data-validation-message-registration").append("Make sure to select at least 1 service");
-    } else if (clientFirst.length > 1 && clientLast.length > 1 && address.length > 1 && state.length > 3 && city.length > 1 && zip.length == 5 && phone.length == 10 && squareFootage.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true)) {
-        window.location.href = "./ClientLandingPage.html";
-    }
+            // Push client data to Firebase
+            let object = {
 
-    console.log(clientFirst);
-    console.log(servicesNeeded1, servicesNeeded2, servicesNeeded3)
+                username: user,
+                usertype: "client",
+                firstname: clientFirst,
+                lastname: clientLast,
+                address: address,
+                address2: address2,
+                state: state,
+                city: city,
+                zip: zip,
+                phone: phone,
+                sqft: squareFootage,
+                servicesneeded: [servicesNeeded1, servicesNeeded2, servicesNeeded3],
+                //coordinateslat: coordinatesLat,
+                //coordianteslong: coordinatesLong, 
+                //calendar: , //need to figure this out
+                dateAdded: firebase.database.ServerValue.TIMESTAMP
+            }
+            // Push client data to Firebase
+            database.ref("clients").child(key).set(object);
+
+            if (clientFirst.length < 1) {
+                $("#data-validation-message-registration").append("Enter your first name");
+            } if (clientLast.length < 1) {
+                $("#data-validation-message-registration").append("<p> Enter your last name");
+            } if (address.length < 1) {
+                $("#data-validation-message-registration").append("<p> Enter your address");
+            } if (state.length < 3) {
+                $("#data-validation-message-registration").append("<p> Make sure you select your state");
+            } if (city.length < 1) {
+                $("#data-validation-message-registration").append("<p> Make sure you select your city");
+            } if (zip.length < 5 || zip.length > 5) {
+                $("#data-validation-message-registration").append("<p> Enter a valid zip code");
+            } if (phone.length < 10 || phone.length > 10) {
+                $("#data-validation-message-registration").append("<p> Enter a valid phone number");
+            } if (squareFootage.length < 1) {
+                $("#data-validation-message-registration").append("<p> Make sure you enter the square footage of your lawn");
+            } if ($("#mowing").prop('checked') == false && $("#trimBushes").prop('checked') == false && $("#edging").prop('checked') == false) {
+                $("#data-validation-message-registration").append("Make sure to select at least 1 service");
+            } else if (clientFirst.length > 1 && clientLast.length > 1 && address.length > 1 && state.length > 3 && city.length > 1 && zip.length == 5 && phone.length == 10 && squareFootage.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true)) {
+                window.location.href = "./ClientLandingPage.html";
+            }
+            
+            console.log(clientFirst);
+            console.log(servicesNeeded1, servicesNeeded2, servicesNeeded3)
+        });
+
+    //window.location.href = "./ClientLandingPage.html"; 
+    //Above will does work, but it leaves the page before firebase has a change to update records. 
 });
