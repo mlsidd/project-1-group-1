@@ -1,0 +1,80 @@
+<!doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Client Login - LawnLawnLand</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/client-style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../sharedAssets/css/sharedStyles.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="Login-Client.html">Customer Login</a>
+                <a class="nav-item nav-link" href="Login-Provider.html">Provider Login</a>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbo" id="pageJumbotron">
+        <h1 class="display-1 text-center" id="pageHeader">Create Your Free Account!</h1>
+    </div> <!--end jumbotron-->
+    <div class="row" id="clientLoginImageHolder">
+        <div class="row" id="row1Login">
+            <div class="col-md-5 offset-1 row1Columns" id="holderOfEasierLawnHeading">
+                <h1 class="px-2 my-5 py-5 text-center" id="easierLawnHeading">Easier lawn care is just a few clicks away!</h1>
+            </div>
+          <!-- Sign-Up Holder-->
+            <div class="col-md-5" id="signUpCard">
+          
+                <!-- Sign-up Form -->
+            <div id="formHolder">
+                <form id="loginForm" role="form">
+                    <div class="form-group row d-flex justify-content-center" id="googleButton">
+                        <button class="btn btn-danger" id="google-signup" type="submit">Sign Up with Google</button>
+                    </div>
+                    <div class="form-group row d-flex justify-content-center">
+                        <button class="btn btn-danger" id="facebook-signup" type="submit">Sign Up with Facebook</button>
+                    </div>
+                    <div class="d-flex justify-content-center" id="orOption">
+                        --or Create Your Account Below--
+                    </div> 
+                    <div class="d-flex justify-content-center" id="data-validation-message">
+                        
+                    </div>       
+                    <div class="form-group row d-flex justify-content-center">
+                        <label for="email-input"></label>
+                        <input class="form-control" id="email-input" type="email" placeholder="Your Email Address">
+                    </div>
+                    <div class="form-group row d-flex justify-content-center">
+                        <label for="age-input"></label>
+                        <input class="form-control" id="password-input" type="password" placeholder="Password">
+                    </div>
+                    <div class="form-group row d-flex justify-content-center">
+                        <div class="col-md-6 justify-content-center pull-left">
+                            <button class="btn btn-success pull-right" id="login_client_button" type="submit">Log In</button>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center"><button class="btn btn-primary" id="create_client_account" type="submit">Create Account</button></div> 
+                    </div>    
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class-"row" id="footer">
+        <div class="card-footer text-dark text-center">
+                &copy LawnLawnLand 
+        </div>
+    </div> <!--end of footer-->
+
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="assets/javascript/ClientPagesLogic.js"></script>
+    
+</body>
+</html>

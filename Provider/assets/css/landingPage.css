@@ -1,0 +1,70 @@
+#landingPage {
+    background-color: black;
+    background-image: url("../images/providerMainImage.jpg");
+    margin-top: 0px;
+    margin-bottom:0px;
+    margin-left:0px;
+    margin-right:0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height:100%;
+    padding-top: 0px; 
+    padding-bottom: 0px; 
+    padding-right: 0px; 
+    padding-left: 0;
+}
+
+#left-side-panel {
+    margin-left: 25px;
+    margin-right:25px;
+    margin-top: 75px;
+}
+
+#placeholderForLandingPageDisplay {
+    color:rgb(245, 182, 182);
+    margin-left:25px;
+    margin-right: 25px;
+    margin-bottom:25px;
+    margin-top:50px;
+    height:600px;
+}
+
+#inbox, #calendar {
+    margin-top:15px;
+}
+
+#holderForProfileDisplay {
+    display:none;
+}
+
+.profileAnswers {
+    background-color: rgb(75, 72, 72); 
+    font-size:22px; 
+    color: white;
+    margin-top:10px
+}
+
+.profileCategories {
+    font-size:24px;
+}
+
+#holderForCalendarDisplay {
+    display:none;
+}
+
+#holderForInboxDisplay {
+    display:none;
+}
+
+#holderForUpcomingJobsDisplay {
+    display:none;
+}
+
+#holderForRequestsDisplay {
+    display:none;
+}
+
+#holderForPayments {
+    display:none;
+}

@@ -1,0 +1,159 @@
+#body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#pageHeader, #pageJumbotron {
+    margin-bottom: 0;
+    margin-right:0;
+    padding-right:0;
+}
+
+#holderForLoginPageImage {
+    background-image: url("../images/providerMainImage.jpg");
+    margin-top: 0px;
+    margin-bottom:0px;
+    margin-left:0px;
+    margin-right:0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height:100%;
+    padding-top: 0px; 
+    padding-bottom: 0px; 
+    padding-right: 0px; 
+    padding-left: 0;
+}
+
+#row1Login {
+    margin-top: 50px;
+    margin-bottom: 0px;
+    width:100%;
+    margin-right:0px;
+    margin-left:0px;
+}
+
+.row1columns {
+    margin-bottom: 25px;
+}
+
+#startSeeingHeading {
+    color:white;
+}
+
+#createAccountCard {
+    background-color: rgba(75, 72, 72, 0.616);
+    color:white;
+}
+
+#topRowOfForm {
+    margin-top: 10px;
+}
+
+#email-input, #password-input {
+    width: 80%;
+}
+
+
+#login_provider_button {
+    width: 80%;
+}
+
+#create_provider_account {
+    width:80%;
+}
+
+#row2Login {
+    background-color: black;
+}
+
+#row1Advertisement {
+    background-color: rgb(218, 212, 212);
+    margin-top:25px;
+    padding:25px;
+}
+
+#loginAdvertisementHeaders {
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+#loginAdvertisementHeadersPara {
+    font-size: 18px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#howToNumber1, #howToNumber3 {
+    font-size:100px;
+    font-weight: bolder;
+    color: rgb(125, 247, 165);
+    text-align:center;
+    padding:0;
+}
+
+#howToTitle1, #howToTitle3 {
+    margin-left: 5px;
+    font-size:26px;
+    font-weight: bold;
+}
+
+#howToInfo1, #howToInfo3 {
+    margin-left:5px;
+}
+
+#howToPicture1, #howToPicture3 {
+    margin-left:5px;
+}
+
+#howToPicture2 {
+    margin-right:5px;
+}
+
+.howToImages {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#howToNumber2 {
+    font-size:100px;
+    font-weight: bolder;
+    color: rgb(125, 247, 165);
+    text-align:center;
+    padding: 0;
+}
+
+.howToText {
+    color: whitesmoke;
+}
+
+#howToTitle2 {
+    margin-left:5px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+#row6Advertisement {
+    margin-top:60px;
+    margin-bottom:25px;
+}
+
+#row5Advertisement {
+    margin-top:60px;
+}
+
+#row4Advertisement {
+    margin-top:60px;
+}
+
+#row3Advertisement {
+    margin-top:60px;
+}
+
+#data-validation-message {
+    margin-top: 10px;
+    margin-bottom:10px;
+    color:red;
+}
+
+
