@@ -215,6 +215,31 @@
         firebase.initializeApp(config);
         
         var dataRef = firebase.database();
+
+        let user = "cool trimmings";
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(gotLocation);
+
+                    function gotLocation(position) {
+                        lat = position.coords.latitude;
+                        lng = position.coords.longitude;
+
+                        
+                        dataRef.ref('providers').orderByChild("businessName").equalTo(user).push({
+                            coordinates : {
+                            lat : lat,
+                            lon : lng
+                            }
+                        });
+                    };
+                } else {
+                    console.log("No GeoData Available")
+                };
+                    
+
+
+
+    
     </script>
     <script src="assets/javascript/maplogic.js"></script>
     <script src="assets/javascript/ProviderPagesLogic.js"></script>
