@@ -202,44 +202,32 @@ $("#create_provider_account").on("click", function(event) {
    var profile = $("#profile");
    var calendar = $("#calendar");
    var inbox = $("#inbox");
-//    var payments = $("#payments");
-//    var jobHistory = $("#jobHistory");
-//    var requests = $("#requests");
-//    var upcomingJobs = $("#upcomingJobs");
    var placeholderForDisplay = $("#placeholderForLandingPageDisplay");
    var profileHolder = $("#holderForProfileDisplay");
    var inboxHolder = $("#placeholderForIndexDisplay");
    var calendarHolder = $("#placeholderForCalendarDisplay");
-//    var requestsHolder = $("#holderForRequestsDisplay");
+    var updateProfileButton = $("#change-provider-profile");
+
+    //When user clicks change profile button, the updated data is updated for that same user in firebase database
+   //-------------put code here-------------//
+
 
 
    // When User clicks panel button, display relevant information
     profile.on("click", function(event) {
         event.preventDefault();
+        //set the values in the input forms to the users answers that are stored in firebase
+        // $("#inputStateAnswer").attr("placeholder", //users firebase answer);
         profileHolder.show();
         placeholderForDisplay.hide();
         inboxHolder.hide();
         calendarHolder.hide();
-        requestsHolder.hide();
-        inboxHolder.hide();
     })
-
-    // requests.on("click", function(event) {
-    //     event.preventDefault();
-    //     requestsHolder.show();
-    //     placeholderForDisplay.hide();
-    //     inboxHolder.hide();
-    //     calendarHolder.hide();
-    //     profileHolder.hide();
-    //     inboxHolder.hide();
-    //     })
 
     inbox.on("click", function(event) {
         event.preventDefault();
         inboxHolder.show();
-        requestsHolder.hide();
         placeholderForDisplay.hide();
-        inboxHolder.hide();
         calendarHolder.hide();
         profileHolder.hide();
         })
@@ -247,32 +235,13 @@ $("#create_provider_account").on("click", function(event) {
     calendar.on("click", function(event) {
         event.preventDefault();
         calendarHolder.show();
-        requestsHolder.hide();
         placeholderForDisplay.hide();
         inboxHolder.hide();
-        requestsHolder.hide();
         profileHolder.hide();
         })
-
-    // payments.on("click", function(event) {
-    //     event.preventDefault();
-    //     paymentsHolder.show();
-    //     requestsHolder.hide();
-    //     placeholderForDisplay.hide();
-    //     inboxHolder.hide();
-    //     calendarHolder.hide();
-    //     profileHolder.hide();
-    //     })    
+  
 
 
-       //capture the updated values stored in firebase from the logged in user
-//    database.ref().on("value", function(snapshot) {
-
-//     $("#employee-table").append("<td>").text(snapshot.child("EmployeeName").val());
-
-
-// console.log(snapshot.val());
-// })
 
 
 

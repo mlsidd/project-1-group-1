@@ -1,0 +1,140 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+#orOption {
+    margin-top: 30px;
+    margin-bottom:10px;
+}
+
+#createAccountCard {
+    border-style: solid;
+    border-width:2px;
+    border-color:rgb(46, 39, 39);
+    background-color:rgb(214, 219, 214);
+}
+
+#map-holder {
+    margin-top:50px;
+}
+
+#place-holder {
+    height:100px;
+    border-style: solid;
+    border: rgb(51, 66, 153);
+    border-width: 10px;
+    background-color: rgb(29, 32, 31);
+    color: white;
+    text-align:center;
+    margin-top:10px;
+}
+
+#holder-for-map{
+    float:left;
+}
+
+#registrationForm {
+    background:rgb(189, 189, 189);
+    margin-bottom: 20px;
+}
+
+#firstRowOfForm {
+    margin-top:10px;
+}
+
+#lastRowOfForm {
+    margin-bottom:10px;
+    margin-top:10px;
+}
+
+#servicesRow {
+    border-style: solid;
+    border-color: rgb(24, 23, 23);
+    border-width: 1px;
+}
+
+#data-validation-message {
+    margin-top: 10px;
+    margin-bottom:10px;
+    color:red;
+}
+
+#left-side-panel {
+    margin-left: 20px;
+}
+
+body {
+    background-color: greenyellow;
+}
+
+.clientPanelButtons {
+    margin-bottom: 10px;
+}
+#data-validation-message-registration {
+    color: red;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+#clp_map{
+    position:absolute;
+    right:5%;
+    height:60%;
+    width: 60%;
+}
+
+
+#holderOfEasierLawnHeading {
+    margin-top:50px;
+}
+
+
+
+#clientLoginImageHolder {
+    background-image: url("../images/clientloginimage.jpg");
+    margin-top: 0px;
+    margin-bottom:0px;
+    margin-left:0px;
+    margin-right:0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height:100%;
+    padding-top: 0px; 
+    padding-bottom: 0px; 
+    padding-right: 0px; 
+    padding-left: 0;
+}
+
+#landingPage {
+    background-image: url("../images/clientlandingpageimage.jpg");
+    margin-top: 0px;
+    margin-bottom:0px;
+    margin-left:0px;
+    margin-right:0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height:100%;
+    padding-top: 0px; 
+    padding-bottom: 0px; 
+    padding-right: 0px; 
+    padding-left: 0;
+}
+
+#holderOfRegistrationImage {
+    background-image: url("../images/clientregisterimage.jpg");
+    margin-top: 0px;
+    margin-bottom:0px;
+    margin-left:0px;
+    margin-right:0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height:100%;
+    padding-top: 0px; 
+    padding-bottom: 0px; 
+    padding-right: 0px; 
+    padding-left: 0;
+}

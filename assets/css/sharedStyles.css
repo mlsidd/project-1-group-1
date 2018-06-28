@@ -6,3 +6,16 @@
     margin-top:0;
     margin-bottom:0;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+#clp_map{
+    position:absolute;
+    right:5%;
+    height:60%;
+    width: 60%;
+}
