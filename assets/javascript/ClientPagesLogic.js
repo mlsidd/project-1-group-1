@@ -112,6 +112,8 @@ $("#create-client-profile").on("click", function (event) {
         window.location.href = "./ClientLandingPage.html";
     }
 
+    $('.form').not(':button, :submit, :reset, :hidden').val('');
+
     console.log(clientFirst);
     console.log(servicesNeeded1, servicesNeeded2, servicesNeeded3)
 });
