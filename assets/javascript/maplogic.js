@@ -19,7 +19,7 @@ var a
     method:"GET",
     url:qurl
 }).then(function(result){
-  dataRef.ref("svcproviders").once("value", function(snapshot){
+  dataRef.ref("providers").once("value", function(snapshot){
     console.log(snapshot.val());
     providers = snapshot.val();
     
@@ -42,19 +42,22 @@ var map = new google.maps.Map(document.getElementById('main_page_map'),mapOption
 var scontent = new Array();
 var sinfo = new Array();
 var smarker = new Array();
-for(let i=0;i<providers.length;i++)
-{  let s = providers[i] ;
-  
-   scontent.push("name: "+s.name+"<br>rating: "+s.rating+"<br>about: "+s.about+"<br>price per sqft: "+s.price+"<br> number: "+s.number);
-   sinfo.push( new google.maps.InfoWindow({content:scontent[i]}));
-    smarker.push( new google.maps.Marker({
+
+for(let c in providers)
+{  let s = providers[c] ;
+
+  let scontent="name: "+s.firstname+"<br>rating: "+s.rating+"<br>about: "+s.about+"<br>price per sqft: "+s.price+"<br> number: "+s.phone;
+  let sinfo = new google.maps.InfoWindow({content:scontent});
+  let smarker= new google.maps.Marker({
      position:s.coordinates,
      map:map,
-     title:s.name
+     title:s.businessName
      
-   }));
-   smarker[i].addListener('click',function(){sinfo[i].open(map,smarker[i]);});
-   console.log("testing");
+   });
+
+   smarker.addListener('click',function(){sinfo.open(map,smarker);});
+  
+ 
 }
 console.log(a);
 
@@ -147,7 +150,7 @@ async function initialize_landing_page_map()
             method:"GET",
             url:qurl
         }).then(function(result){
-          dataRef.ref("svcproviders").once("value", function(snapshot){
+          dataRef.ref("providers").once("value", function(snapshot){
             console.log(snapshot.val());
             providers = snapshot.val();
             
@@ -167,23 +170,23 @@ async function initialize_landing_page_map()
         };
         
         var map = new google.maps.Map(document.getElementById('clp_map'),mapOptions);
-        var scontent = new Array();
-        var sinfo = new Array();
-        var smarker = new Array();
-        for(let i=0;i<providers.length;i++)
-        {  let s = providers[i] ;
+   
+        for(let c in providers)
+        {  let s = providers[c] ;
           
-           scontent.push("name: "+s.name+"<br>rating: "+s.rating+"<br>about: "+s.about+"<br>price per sqft: "+s.price+"<br> number: "+s.number+"<br><button class='messageprovider' id='"+s.name+"'>message</button>");
-           sinfo.push( new google.maps.InfoWindow({content:scontent[i]}));
-            smarker.push( new google.maps.Marker({
+           let scontent="name: "+s.firstname+"<br>rating: "+s.rating+"<br>about: "+s.about+"<br>price per sqft: "+s.price+"<br> number: "+s.phone+"<br><button class='messageprovider' id='"+s.username+"'>message</button>";
+           let sinfo = new google.maps.InfoWindow({content:scontent});
+           let  smarker =  new google.maps.Marker({
              position:s.coordinates,
              map:map,
-             title:s.name
+             title:s.businessName
              
-           }));
-           smarker[i].addListener('click',function(){sinfo[i].open(map,smarker[i]);
+           });
+           //console.log(sinfo[i])
+           smarker.addListener('click',function(){sinfo.open(map,smarker);
             $(".messageprovider").on("click",function(){sessionStorage.setItem("to",$(this).attr("id"));build_channel();window.location.href="./messages.html"})});
            console.log("testing");
+         
         }
         
         

@@ -15,7 +15,7 @@ var servicesprovided = [];
 var availableDays = [];
 
 // Initialize Firebase
-
+var dataRef = firebase.database();
   console.log(dataRef);
 
 
@@ -166,7 +166,9 @@ $("#create_provider_account").on("click", function(event) {
             miles: providerMiles,
             availableDays: availableDays,
             servicesprovided: servicesprovided,
-            dateAdded: firebase.database.ServerValue.TIMESTAMP
+            dateAdded: firebase.database.ServerValue.TIMESTAMP,
+            rating:5/*placeholder*/,
+            about:"feature coming soon"
         });
         // Take user to the landing page    
         window.location.href = "./ProviderLandingPage.html";
@@ -221,6 +223,8 @@ $("#create_provider_account").on("click", function(event) {
         placeholderForDisplay.hide();
         calendarHolder.hide();
         profileHolder.hide();
+        window.location.href = "./messages.html"
+   
         })
 
     calendar.on("click", function(event) {
