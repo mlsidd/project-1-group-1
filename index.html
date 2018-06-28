@@ -11,6 +11,8 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/sharedStyles.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/client-style.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <!-- <link rel="stylesheet" type="text/css" href="style2.css"> -->
 </head>
@@ -18,8 +20,13 @@
 <body>
     <header>
 
-        <button type="button" class="btn btn-outline-secondary btn-md">Sell Service</button>
-        <a type="button" class="btn btn-outline-secondary btn-md" a href="Login-Client.html">Need Service</a>
+        <button type="button" class="btn btn-outline-secondary btn-md">
+            <a href="Login-Client.html">Need Service</a>
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-md">
+            <a href="Login-Provider.html">Sell Service</a>
+        </button>
+        
         <h1>Beautify Your Green </h1>
 
     </header>
@@ -64,6 +71,8 @@
             <script>
             window.onload = loadScript("initAutocomplete");
             </script>
+
+            <script src="assets/javascript/maplogic"></script>
 </body>
 
 </html>
