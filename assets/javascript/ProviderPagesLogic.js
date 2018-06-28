@@ -1,6 +1,4 @@
-// IF user is going to create new account...
-//----------------if else statements will start here once incluce these features-----------------
-// Get the provider's user name and password from the input boxes
+// Declare variables
 var providerUserName = "";
 var providerPassword = "";
 var providerFirst = "";
@@ -15,7 +13,6 @@ var providerPhone = "";
 var providerMiles = 0;
 var servicesprovided = [];
 var availableDays = [];
-var uid = "";
 
 // Initialize Firebase
 var config = {
@@ -30,80 +27,72 @@ var config = {
     
   var dataRef = firebase.database();
 
+  console.log(dataRef);
 
-
-// IF user is going to use google account to sign up
-//-------------------enter code here for using Google API-------------------
-
-//IF user is going to use facebook to sign up
-//------------------enter code here for using facebook API--------------------------
 
    //-------------LOGIN PAGE CODE IS BELOW-------------//
 
-   // Capture Button Click
+//-------------------enter code here for using Google API-------------------
+
+//------------------enter code here for using facebook API--------------------------
+
+// Event listener tied to create account button to store username and password data 
 $("#create_provider_account").on("click", function(event) {
     event.preventDefault();
+    console.log(dataRef);
 
-    // Get the user's data from the input boxes for Firebase database.
+
+    // Get the user's username and password from the input boxes for Firebase database.
     providerUserName = $("#email-input").val().trim();
     providerPassword = $("#password-input").val().trim();
-    // form validation
-    if(providerUserName.indexOf("@") == -1 && providerPassword.length < 7) {
-        $("#data-validation-message").html("Make sure you are entering your email <p> Password must contain at least 7 characters");        
-    } else if (providerPassword.length < 7) {
-        $("#data-validation-message").text("Password must contain at least 7 characters");
+    // login form validation to ensure using email address and password is at least 6 characters long
+    if(providerUserName.indexOf("@") == -1 && providerPassword.length < 6) {
+        $("#data-validation-message").html("Make sure you are entering your email <p> Password must contain at least 6 characters");        
+    } else if (providerPassword.length < 6) {
+        $("#data-validation-message").text("Password must contain at least 6 characters");
     } else if (providerUserName.indexOf("@") == -1) {
         $("#data-validation-message").text("Make sure you are entering your email");
-    } else if(providerUserName.indexOf("@") > 0 && providerPassword.length > 6) {
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            if (errorCode == 'auth/weak-password') {
-                alert('The password is too weak.');
-            } else {
-                alert(errorMessage);
-            }
-  console.log(error);
-          });
+    } else if(providerUserName.indexOf("@") > 0 && providerPassword.length > 5) {
+        // Create a new user account and store it using local storage
+        sessionStorage.setItem("userName", providerUserName);
+        sessionStorage.setItem("Password", providerPassword);
 
-          dataRef.ref().push({
+        var ref = firebase.database().ref("providers/username");
+        ref.once("value")
+        .then(function(snapshot) {
+        snapshot.exists();  // true
+        });
 
-          usertype: "provider",
-          uid = user.uid,
-          username: providerUserName,
-          password: providerPassword,
-          firstname: providerFirst,
-          lastname: providerLast,
-          businessName: businessName,
-          address: providerAddress,
-          address2: providerAddress2,
-          state: providerState,
-          city: providerCity,
-          zip: providerZip,
-          phone: providerPhone,
-          miles: providerMiles,
-          availableDays: availableDays,
-          servicesprovided: servicesprovided
-          });
-
-        window.location.href = "./Registration-Provider.html";
-    }
-    console.log(providerUserName);
-    console.log(providerPassword);
-});
+            // check firebase to see if the username/password already exists
+            // // Fetch a Blog Post by ID. Returns a Promise of an actual object, not a DataSnapshot.
+            // function getUserFromDatabase(currentusername) {
+            //     return dataRef.child('providers').child(currentusername).once('value').then(function(snapshot) {
+            //     return snapshot.val();
+            //     });
+            // }
+            // console.log(getUserFromDatabase(providerUserName));
+            //     // if (snapshot.child.val().username !== providerUserName) {
+            //     //     //push username and password to firebase database if username is available
+                //     dataRef.ref('providers/').push({ 
+                //         username: providerUserName,
+                //         password: providerPassword });
+                //         // AND take user to registration page to complete registration
+                //         window.location.href = "./Registration-Provider.html";
+                // }
+                // else {
+                // // return message if username already exists
+                // $("#data-validation-message").text("That username and/or password already exists.");
+                // }    
+        }
+            });
+    //     }
+    // });
 
    //-------------REGISTRATION PAGE CODE IS BELOW-------------//
 
    // Capture Button Click
    $("#create-provider-profile").on("click", function(event) {
     event.preventDefault();
-
-    var user = firebase.auth().currentUser;
-
-    if (user  != null) {
-    // User is signed in.
-     
     
     // Get values from input boxes
     providerFirst = $("#providerFirstName").val().trim();
@@ -147,29 +136,7 @@ $("#create_provider_account").on("click", function(event) {
     if ($("#sunday").prop("checked")) {
         availableDays.push($("#sunday").val())
     }
-    
-    // Push provider data to Firebase
-    var user = firebase.auth().currentUser;
-
-    user.updateProfile({
-    
-    firstname: providerFirst,
-    lastname: providerLast,
-    businessName: businessName,
-    address: providerAddress,
-    address2: providerAddress2,
-    state: providerState,
-    city: providerCity,
-    zip: providerZip,
-    phone: providerPhone,
-    miles: providerMiles,
-    availableDays: availableDays,
-    servicesprovided: servicesprovided,
-    //coordinateslat: coordinatesLat,
-    //coordianteslong: coordinatesLong, 
-    dateAdded: firebase.database.ServerValue.TIMESTAMP
-    });
-
+    //data validation to ensure user entered information correctly
     if (providerFirst.length < 1) {
         $("#data-validation-message-registration").append("Enter your first name");
     } if (providerLast.length < 1) {
@@ -191,23 +158,33 @@ $("#create_provider_account").on("click", function(event) {
     } if($("#mowing").prop('checked') == false && $("#trimBushes").prop('checked') == false && $("#edging").prop('checked') == false) {
         $("#data-validation-message-registration").append("Make sure to select at least 1 service");
     } else if(providerFirst.length > 1 && providerLast.length > 1 && providerAddress.length > 1 && providerState.length > 3 && providerCity.length > 1 && providerZip.length == 5 && providerPhone.length == 10 && providerMiles.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true) && ($("#monday").prop('checked') == true || $("#tuesday").prop('checked') == true || $("#wednesday").prop('checked') == true || $("#thursday").prop('checked') == true || $("#friday").prop('checked') == true || $("#saturday").prop('checked') == true || $("#sunday").prop('checked') == true)) {
+
+        // Push provider data to THE SAME user in the database
+        dataRef.ref('providers/').push({
+            username: sessionStorage.getItem("userName"),
+            password: sessionStorage.getItem("Password"),
+            firstname: providerFirst,
+            lastname: providerLast,
+            businessName: businessName,
+            address: providerAddress,
+            address2: providerAddress2,
+            state: providerState,
+            city: providerCity,
+            zip: providerZip,
+            phone: providerPhone,
+            miles: providerMiles,
+            availableDays: availableDays,
+            servicesprovided: servicesprovided,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        });
+        // Take user to the landing page    
         window.location.href = "./ProviderLandingPage.html";
     };
-}    else {
-    // No user is signed in.
-    }
-   
+
    });
 
    //-------------RETURNING USERS CODE IS BELOW-------------//
-   $("#login_provider_button").on("click", function(event) {
-   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-  });
-});
+   //need to add event listener to login button for returing logins and then user is taken direction to landing page
   
 
    //-------------LANDING PAGE CODE IS BELOW-------------//
@@ -225,62 +202,46 @@ $("#create_provider_account").on("click", function(event) {
    var profile = $("#profile");
    var calendar = $("#calendar");
    var inbox = $("#inbox");
-   var payments = $("#payments");
-   var jobHistory = $("#jobHistory");
-   var requests = $("#requests");
-   var upcomingJobs = $("#upcomingJobs");
    var placeholderForDisplay = $("#placeholderForLandingPageDisplay");
    var profileHolder = $("#holderForProfileDisplay");
    var inboxHolder = $("#placeholderForIndexDisplay");
    var calendarHolder = $("#placeholderForCalendarDisplay");
-   var requestsHolder = $("#holderForRequestsDisplay");
+    var updateProfileButton = $("#change-provider-profile");
+
+    //When user clicks change profile button, the updated data is updated for that same user in firebase database
+   //-------------put code here-------------//
+
 
 
    // When User clicks panel button, display relevant information
     profile.on("click", function(event) {
         event.preventDefault();
+        //set the values in the input forms to the users answers that are stored in firebase
+        // $("#inputStateAnswer").attr("placeholder", //users firebase answer);
         profileHolder.show();
         placeholderForDisplay.hide();
         inboxHolder.hide();
         calendarHolder.hide();
-        requestsHolder.hide();
-        inboxHolder.hide();
     })
-
-    requests.on("click", function(event) {
-        event.preventDefault();
-        requestsHolder.show();
-        placeholderForDisplay.hide();
-        inboxHolder.hide();
-        calendarHolder.hide();
-        profileHolder.hide();
-        inboxHolder.hide();
-        })
 
     inbox.on("click", function(event) {
         event.preventDefault();
         inboxHolder.show();
-        requestsHolder.hide();
         placeholderForDisplay.hide();
-        inboxHolder.hide();
         calendarHolder.hide();
         profileHolder.hide();
         })
 
-firebase.auth().signOut().then(function() {
-    // Sign-out successful.
-    }).catch(function(error) {
-    // An error happened.
-    });
-
-       //capture the updated values stored in firebase from the logged in user
-//    database.ref().on("value", function(snapshot) {
-
-//     $("#employee-table").append("<td>").text(snapshot.child("EmployeeName").val());
+    calendar.on("click", function(event) {
+        event.preventDefault();
+        calendarHolder.show();
+        placeholderForDisplay.hide();
+        inboxHolder.hide();
+        profileHolder.hide();
+        })
+  
 
 
-// console.log(snapshot.val());
-// })
 
 
 
