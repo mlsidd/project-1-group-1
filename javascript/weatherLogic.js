@@ -21,12 +21,12 @@ $(document).ready(function () {
                 url: api_url,
                 method: 'GET',
                 success: function (data) {
-
+ 
                     for (i = 0; i < 16; i++) {
                         let info = data.list
                         console.log(info[i])
 
-                        var day = moment(info[i].dt).format('MMMM Do YYYY, h:mm:ss a');
+                        var day = moment.unix(info[i].dt).format('MMMM Do YYYY');
                         var rain = info[i].weather[0].main;
                         var rainType = info[i].weather[0].description;
                         var icon = info[i].weather[0].icon;
@@ -35,7 +35,7 @@ $(document).ready(function () {
                         var tempLow = Math.floor(info[i].temp.min - 273);
 
                         console.log(day)
-                        $('#result').append("<tr><td>" +
+                        $('#result').append("<tr><td>" + " " +
                             day + "</td><td>" +
                             rain + "</td><td>" +
                             rainType + "</td><td>" +
