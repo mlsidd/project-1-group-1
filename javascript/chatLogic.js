@@ -34,7 +34,7 @@ $(document).ready(function(){
 
 })
 
-database.ref("clients").orderByChild("username").equalTo(user).once("value", function(snapshot){
+database.ref("clients").child("messages").orderByChild("sender").equalTo(user).once("value", function(snapshot){
 console.log(snapshot.val(), "0");
 let x = snapshot.val();
 console.log(x)
@@ -42,12 +42,15 @@ console.log(x)
 
 snapshot.forEach(function(childSnapshot){
  console.log(snapshot.val());
+ console.log(childSnapshot.child("sender").val())
+let user = childSnapshot.child("sender").val();
+let sender = childSnapshot.child("recipient").val();
+let time = childSnapshot.child("timestamp").val();
+let msg = childSnapshot.child("message").val();
 
-let user = childSnapshot.child("servicesneeded").child("0").val();
-let time = childSnapshot.child("servicesneeded").child("1").val();
-let msg = childSnapshot.child("servicesneeded").child("2").val();
-
+console.log(time)
  $("#msgs").append( "<tr><td>" + user
+ + "</td><td>" + sender
  + "</td><td>" + time
  + "</td><td>" + msg
  + "</td></tr>" 
