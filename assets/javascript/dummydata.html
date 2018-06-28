@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>dummy data creator</title>
+    </head>
+    <body>
+        check console
+    </body>
+</html>
+
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+<script>
+        var config = {
+    apiKey: "AIzaSyDFhTiBSjTaFH-bYZdHI5v_FRS3nE76adk",
+    authDomain: "thp1g1-1529168178742.firebaseapp.com",
+    databaseURL: "https://thp1g1-1529168178742.firebaseio.com",
+    projectId: "thp1g1-1529168178742",
+    storageBucket: "thp1g1-1529168178742.appspot.com",
+    messagingSenderId: "293280499251"
+  };
+  
+  firebase.initializeApp(config);
+  var dataRef = firebase.database();
+  </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        
+        
+        
+ <script>     
+        //populate dummynames with names from srvcpvdrs
+        dataRef.ref("svcproviders").once("value", function(snapshot){
+           
+            providers = snapshot.val();
+        
+        for(let i=0;i<providers.length;i++)
+        {  let s = providers[i] ;
+        
+               dataRef.ref('providers/').push({
+            username: s.name+"@dummydata.com",
+            password: "provider",
+            firstname: s.name,
+            lastname: " ",
+            businessName: s.name+"'s businiess",
+            address: "providerAddress",
+            address2: "providerAddress2",
+            state: "Texas",
+            city: "Houston",
+            zip: "77070",
+            coordinates:s.coordinates,
+            price:s.price,
+            phone: "555-555-5555",
+            miles: Math.floor(Math.random()*50),
+            availableDays: "null",
+            servicesprovided: "servicesprovided",
+            dateAdded: firebase.database.ServerValue.TIMESTAMP,
+            rating:Math.floor(Math.random()*5+1),
+            about:"feature coming soon"
+        });
+        }        
+});
+ 
+        
+        
+</script>  
