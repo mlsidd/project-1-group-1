@@ -179,7 +179,18 @@
     </script>
     <script src="assets/javascript/maplogic.js"></script>
     <script src="assets/javascript/ClientPagesLogic.js"></script>
- 
+    <script>
+    function autofill_address()
+    {   let a=JSON.parse(localStorage.address);
+        console.log();
+        $("#inputAddress").val(a.street_number.short_name+" "+a.street_name.short_name);
+        $("#inputCity").val(a.city.short_name);
+        $("#inputState").val(a.state.long_name);
+        $("#inputZip").val(a.zip.short_name);
+    }
+    autofill_address();
+
+    </script>
 
         
 </body>
