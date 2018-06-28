@@ -11,6 +11,9 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <style>body{background-image: url("assets/images/clientloginimage.jpg");
+    background-repeat:no-repeat;
+    }</style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,17 +34,21 @@
 
           <div class="col-md-4 offset-1">
             <div class="btn-group-vertical" id="buttonPanel">
+                    <br>
+                    <br>
+                    <br>
                     <button type="button" class="btn btn-info btn-lg clientPanelButtons">My Profile</button> 
                     <button type="button" class="btn btn-info btn-lg clientPanelButtons">Inbox</button> 
                     <button type="button" class="btn btn-info btn-lg clientPanelButtons">Map</button>           
                     <button type="button" class="btn btn-info btn-lg clientPanelButtons">Calendar</button>                      
             </div>
         </div>
-        <div class="col-md-6">
-              <div id="clp_map"></div>
-        </div>
+        
+          <div id="clp_map"></div>
+        
         </div> <!--end of row--> 
     </div> <!--end of landing page row -->   
+
     <div class-"row" id="footer">
         <div class="card-footer text-dark text-center bg-light">
                 &copy LawnLawnLand 
