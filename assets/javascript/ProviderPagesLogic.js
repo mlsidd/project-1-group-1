@@ -15,17 +15,6 @@ var servicesprovided = [];
 var availableDays = [];
 
 // Initialize Firebase
-var config = {
-    apiKey: "AIzaSyDFhTiBSjTaFH-bYZdHI5v_FRS3nE76adk",
-    authDomain: "thp1g1-1529168178742.firebaseapp.com",
-    databaseURL: "https://thp1g1-1529168178742.firebaseio.com",
-    projectId: "thp1g1-1529168178742",
-    storageBucket: "thp1g1-1529168178742.appspot.com",
-    messagingSenderId: "293280499251"
-  };
-  firebase.initializeApp(config);
-    
-  var dataRef = firebase.database();
 
   console.log(dataRef);
 
@@ -35,7 +24,7 @@ var config = {
 //-------------------enter code here for using Google API-------------------
 
 //------------------enter code here for using facebook API--------------------------
-
+console.log("testingggg")
 // Event listener tied to create account button to store username and password data 
 $("#create_provider_account").on("click", function(event) {
     event.preventDefault();
@@ -54,9 +43,9 @@ $("#create_provider_account").on("click", function(event) {
         $("#data-validation-message").text("Make sure you are entering your email");
     } else if(providerUserName.indexOf("@") > 0 && providerPassword.length > 5) {
         // Create a new user account and store it using local storage
-        sessionStorage.setItem("userName", providerUserName);
-        sessionStorage.setItem("Password", providerPassword);
-
+        localStorage.setItem("userName", providerUserName);
+        localStorage.setItem("Password", providerPassword);
+        window.location.href = "./Registration-Provider.html";
         var ref = firebase.database().ref("providers/username");
         ref.once("value")
         .then(function(snapshot) {
@@ -161,8 +150,8 @@ $("#create_provider_account").on("click", function(event) {
 
         // Push provider data to THE SAME user in the database
         dataRef.ref('providers/').push({
-            username: sessionStorage.getItem("userName"),
-            password: sessionStorage.getItem("Password"),
+            username: localStorage.getItem("userName"),
+            password: localStorage.getItem("Password"),
             firstname: providerFirst,
             lastname: providerLast,
             businessName: businessName,
@@ -242,10 +231,3 @@ $("#create_provider_account").on("click", function(event) {
   
 
 
-
-
-
-
-
-
-    

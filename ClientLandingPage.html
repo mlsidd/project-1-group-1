@@ -42,7 +42,7 @@
                     <a href="messages.html"><button type="button" class="btn btn-info btn-lg clientPanelButtons">Inbox</button></a>
                     <a href="map.html"><button type="button" class="btn btn-info btn-lg clientPanelButtons">Map</button></a>
                     <a href="calendar.html"><button type="button" class="btn btn-info btn-lg clientPanelButtons">Calendar</button></a>                     
-
+                    <button  type="button" class="btn btn-info btn-lg clientPanelButtons" onclick="logout()">Log Out</button>
             </div>
         </div>
         
@@ -76,6 +76,11 @@
 <script src="assets/javascript/ClientPagesLogic.js"></script>
 <script>
     window.onload=loadScript("initialize_landing_page_map");
+    function logout()
+    {
+        localStorage.clear();
+        setTimeout(function(){window.location.href = "index.html";},2000);
+    }
 </script>
 </body>
 </html>
