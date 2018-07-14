@@ -108,7 +108,7 @@ $("#create-client-profile").on("click", function (event) {
         $("#data-validation-message-registration").append("<p> Make sure you enter the square footage of your lawn");
     } if ($("#mowing").prop('checked') == false && $("#trimBushes").prop('checked') == false && $("#edging").prop('checked') == false) {
         $("#data-validation-message-registration").append("Make sure to select at least 1 service");
-    } else if (clientFirst.length > 1 && clientLast.length > 1 && address.length > 1 && state.length > 3 && city.length > 1 && zip.length == 5 && phone.length == 10 && squareFootage.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true)) {
+    } if (clientFirst.length > 1 && clientLast.length > 1 && address.length > 1 && state.length > 3 && city.length > 1 && zip.length == 5 && phone.length == 10 && squareFootage.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true)) {
         window.location.href = "./ClientLandingPage.html";
     }
 
