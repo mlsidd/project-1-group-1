@@ -253,10 +253,6 @@ async function initialize_provider_map()
  
 
 
-       /* serviceArea = new google.maps.Marker({
-          position:userinfo.coordinates,
-          map:map,
-          title:"service area"});*/
 
         });
  

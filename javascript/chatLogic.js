@@ -190,6 +190,8 @@ data.on('value',snap => {messageArray=snap.val();
     }
  
 
+
+
 function create_clickevents()
 {
 
