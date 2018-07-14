@@ -15,7 +15,7 @@ var servicesprovided = [];
 var availableDays = [];
 
 // Initialize Firebase
-
+var dataRef = firebase.database();
   console.log(dataRef);
 
 
@@ -50,8 +50,8 @@ $("#create_provider_account").on("click", function(event) {
         $("#data-validation-message").text("Make sure you are entering your email");
     } else if(providerUserName.indexOf("@") > 0 && providerPassword.length > 5) {
         // Create a new user account and store it using local storage
-        localStorage.setItem("userName", providerUserName);
-        localStorage.setItem("Password", providerPassword);
+        localStorage.setItem("email", providerUserName);
+        localStorage.setItem("pass", providerPassword);
         window.location.href = "./Registration-Provider.html";
         var ref = firebase.database().ref("providers/username");
         ref.once("value")
@@ -157,8 +157,8 @@ $("#create_provider_account").on("click", function(event) {
 
         // Push provider data to THE SAME user in the database
         dataRef.ref('providers/').push({
-            username: localStorage.getItem("userName"),
-            password: localStorage.getItem("Password"),
+            username: localStorage.getItem("email"),
+            password: localStorage.getItem("pass"),
             firstname: providerFirst,
             lastname: providerLast,
             businessName: businessName,
@@ -167,11 +167,15 @@ $("#create_provider_account").on("click", function(event) {
             state: providerState,
             city: providerCity,
             zip: providerZip,
+            coordinates:null,
+            price:3/*place holder until we have an input field for this*/,
             phone: providerPhone,
             miles: providerMiles,
             availableDays: availableDays,
             servicesprovided: servicesprovided,
-            dateAdded: firebase.database.ServerValue.TIMESTAMP
+            dateAdded: firebase.database.ServerValue.TIMESTAMP,
+            rating:5/*placeholder*/,
+            about:"feature coming soon"
         });
         // Take user to the landing page    
         window.location.href = "./ProviderLandingPage.html";
@@ -266,6 +270,8 @@ $("#create_provider_account").on("click", function(event) {
         placeholderForDisplay.hide();
         calendarHolder.hide();
         profileHolder.hide();
+        window.location.href = "./messages.html"
+   
         })
 
     calendar.on("click", function(event) {
@@ -278,3 +284,45 @@ $("#create_provider_account").on("click", function(event) {
   
 
 
+        async function grab_provider_data() {
+    
+ 
+            let dataRef = firebase.database();
+           
+        
+        
+            let temp = await dataRef.ref("providers").once("value").then(function(snapshot){return snapshot.val();})
+        
+            
+                let bool = false;
+                //let b = Object.keys(temp);
+                //let iteration = 0;
+                for (let c in temp) {
+        
+                    if (temp[c].username == localStorage.getItem("email") && temp[c].password == localStorage.getItem("pass")) {
+                        obj={
+                        firstname: temp[c].firstname,
+                        lastname: temp[c].lastname,
+                        phone: temp[c].phone,
+                        city: temp[c].city,
+                        state: temp[c].state,
+                        coordinates:temp[c].coordinates,
+                        username: temp[c].username,
+                        userKey: c
+                        };
+                         bool=true;
+                    }
+                  
+                }
+           
+            
+            if(bool==true)
+            {
+              return obj;  
+            }else{
+                return "user not found";
+            }
+            
+        
+        }
+        
