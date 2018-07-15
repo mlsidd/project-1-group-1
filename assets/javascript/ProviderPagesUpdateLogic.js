@@ -2,7 +2,7 @@
       // FROM CACHE var user = localStorage.getItem("email");
   
   database.ref("providers").orderByChild("businessName").equalTo(user).once("value", function(snapshot){
-      console.log(snapshot.val(), "0");  
+      console.log(snapshot.val(), "0"); 
       
       snapshot.forEach(function(childSnapshot){
   
