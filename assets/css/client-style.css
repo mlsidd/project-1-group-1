@@ -76,7 +76,10 @@ body {
     margin-top:20px;
     margin-bottom: 20px;
 }
-
+/*
++++++
+ALSO IN sharedStyles w diff proportions, those work better.
++++++
 #clp_map{
     float:left;
     margin-top:3%;
@@ -84,7 +87,7 @@ body {
     width: 100%;
 
 }
-
+*/
 
 #holderOfEasierLawnHeading {
     margin-top:50px;
