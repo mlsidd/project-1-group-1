@@ -22,10 +22,7 @@ var servicesNeeded = [];
 //------------------enter code here for using facebook API--------------------------
 
 
-/*
-******
-NOT IN USE ATM
-******
+
 // Capture Button Click
 $("#create_client_account").on("click", function (event) {
     event.preventDefault();
@@ -49,7 +46,7 @@ $("#create_client_account").on("click", function (event) {
     console.log(clientPassword);
 });
 
-*/
+
 
 // Capture Button Click
 $("#create-client-profile").on("click", function (event) {
@@ -73,11 +70,11 @@ $("#create-client-profile").on("click", function (event) {
 
     console.log(clientFirst + address + phone)
 
-    if (clientFirst.length < 1) {
+    if (clientFirst.length < 1) { //Could be better
         $("#data-validation-message-registration").append("Enter your first name");
-    } if (clientLast.length < 1) {
+    } if (clientLast.length < 1) { //Could be better
         $("#data-validation-message-registration").append("<p> Enter your last name");
-    } if (address.length < 1) {
+    } if (address.length < 1) { //Could be better
         $("#data-validation-message-registration").append("<p> Enter your address");
     } if (state.length < 3) {
         $("#data-validation-message-registration").append("<p> Make sure you select your state");
@@ -95,8 +92,7 @@ $("#create-client-profile").on("click", function (event) {
 
         console.log("if above checks out, below")
 
-    //window.location.href = "./ClientLandingPage.html";
-    
+       
 
 
     // Push client data to Firebase
@@ -123,6 +119,8 @@ $("#create-client-profile").on("click", function (event) {
     // Push client data to Firebase
     dataRef.ref("clients").push(object);
     console.log("pushed");
+    window.location.href = "./ClientLandingPage.html";
+
 
     /*
     ********************************
@@ -156,7 +154,6 @@ $("#create-client-profile").on("click", function (event) {
     */
 
     }
-    window.location.href = "./ClientLandingPage.html";
 
 });
 
