@@ -19,6 +19,13 @@ var dataRef = firebase.database();
   console.log(dataRef);
 
 
+
+
+
+
+
+  
+
    //-------------LOGIN PAGE CODE IS BELOW-------------//
 
 //-------------------enter code here for using Google API-------------------
@@ -184,7 +191,6 @@ $("#create_provider_account").on("click", function(event) {
    //-------------LANDING PAGE CODE IS BELOW-------------//
 
    dataRef.ref().on("child_added", function(childSnapshot) {
-       console.log(childSnapshot.val());
 
        $("#firstNameStored").text(childSnapshot.val().providerFirst);
 
@@ -211,6 +217,47 @@ $("#create_provider_account").on("click", function(event) {
     profile.on("click", function(event) {
         event.preventDefault();
         //set the values in the input forms to the users answers that are stored in firebase
+            var user = "cool trimmings";
+                // FROM CACHE var user = localStorage.getItem("email");
+            
+            dataRef.ref("providers").orderByChild("businessName").equalTo(user).once("value", function(snapshot){
+                console.log(snapshot.val(), "0");  
+                
+                snapshot.forEach(function(childSnapshot){
+            
+                    console.log(childSnapshot.child("firstname").val());
+            
+            
+                    $("#firstNameAnswer").val(childSnapshot.child("firstname").val());
+                    $("#lastNameAnswer").val(childSnapshot.child("lastname").val());
+                    $("#businessNameAnswer").val(childSnapshot.child("businessName").val());
+                    $("#inputAddressAnswer").val(childSnapshot.child("address").val());
+                    $("#inputAddress2Answer").val(childSnapshot.child("address2").val());
+                    $("#inputCityAnswer").val(childSnapshot.child("city").val());
+                    $("#inputStateAnswer").val(childSnapshot.child("state").val());
+                    $("#inputZipAnswer").val(childSnapshot.child("zip").val());
+                    $("#phoneNumberAnswer").val(childSnapshot.child("phone").val());
+                
+                    $("#milesAnswer").val(childSnapshot.child("miles").val());
+                    
+                    //NEED TO ADDRESS how we store services and dates for the following
+                    $("#edging").val(childSnapshot.child("servicesProvided").child("0").val());
+                    $("#mowing").val(childSnapshot.child("servicesProvided").child("1").val());
+                    $("#trimBushes").val(childSnapshot.child("servicesProvided").child("2").val());
+        
+                    $("#monday").val(childSnapshot.child("availableDays").child("0").val());
+                    $("#tuesday").val(childSnapshot.child("availableDays").child("0").val());
+                    $("#wednesday").val(childSnapshot.child("availableDays").child("0").val());
+                    $("#thursday").val(childSnapshot.child("availableDays").child("0").val());
+                    $("#friday").val(childSnapshot.child("availableDays").child("0").val());
+                    $("#saturday").val(childSnapshot.child("availableDays").child("0").val());
+                    $("#sunday").val(childSnapshot.child("availableDays").child("0").val());
+        
+        
+            
+                });
+            });
+
         // $("#inputStateAnswer").attr("placeholder", //users firebase answer);
         profileHolder.show();
         placeholderForDisplay.hide();
