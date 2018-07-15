@@ -21,6 +21,8 @@ var servicesNeeded = [];
 //IF user is going to use facebook to sign up
 //------------------enter code here for using facebook API--------------------------
 
+
+
 // Capture Button Click
 $("#create_client_account").on("click", function (event) {
     event.preventDefault();
@@ -44,9 +46,13 @@ $("#create_client_account").on("click", function (event) {
     console.log(clientPassword);
 });
 
+
+
 // Capture Button Click
 $("#create-client-profile").on("click", function (event) {
     event.preventDefault();
+    console.log("START")
+
 
     // Get values from input boxes
     clientFirst = $("#clientFirstName").val().trim();
@@ -62,6 +68,31 @@ $("#create-client-profile").on("click", function (event) {
     servicesNeeded2 = $("#edging").val();
     servicesNeeded3 = $("#trimBushes").val();
 
+    console.log(clientFirst + address + phone)
+
+    if (clientFirst.length < 1) { //Could be better
+        $("#data-validation-message-registration").append("Enter your first name");
+    } if (clientLast.length < 1) { //Could be better
+        $("#data-validation-message-registration").append("<p> Enter your last name");
+    } if (address.length < 1) { //Could be better
+        $("#data-validation-message-registration").append("<p> Enter your address");
+    } if (state.length < 3) {
+        $("#data-validation-message-registration").append("<p> Make sure you select your state");
+    } if (city.length < 1) {
+        $("#data-validation-message-registration").append("<p> Make sure you select your city");
+    } if (zip.length < 5 || zip.length > 5) {
+        $("#data-validation-message-registration").append("<p> Enter a valid zip code");
+    } if (phone.length < 10 || phone.length > 10) {
+        $("#data-validation-message-registration").append("<p> Enter a valid phone number");
+    } if (squareFootage.length < 1) {
+        $("#data-validation-message-registration").append("<p> Make sure you enter the square footage of your lawn");
+    } if ($("#mowing").prop('checked') == false && $("#trimBushes").prop('checked') == false && $("#edging").prop('checked') == false) {
+        $("#data-validation-message-registration").append("Make sure to select at least 1 service");
+    } if (clientFirst.length > 1 && clientLast.length > 1 && address.length > 1 && state.length > 3 && city.length > 1 && zip.length == 5 && phone.length == 10 && squareFootage.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true)) {
+
+        console.log("if above checks out, below")
+
+       
 
 
     // Push client data to Firebase
@@ -87,9 +118,16 @@ $("#create-client-profile").on("click", function (event) {
     }
     // Push client data to Firebase
     dataRef.ref("clients").push(object);
+    console.log("pushed");
+    window.location.href = "./ClientLandingPage.html";
 
 
+    /*
+    ********************************
+    CODE ON MUTE (NO IN USE ATM) 
 
+    - This code was validating input fields and also ..redirect to Client Landing Page. This should occur before push. Looking to add a clear function that works after timeout.
+    ********************************
     if (clientFirst.length < 1) {
         $("#data-validation-message-registration").append("Enter your first name");
     } if (clientLast.length < 1) {
@@ -109,11 +147,14 @@ $("#create-client-profile").on("click", function (event) {
     } if ($("#mowing").prop('checked') == false && $("#trimBushes").prop('checked') == false && $("#edging").prop('checked') == false) {
         $("#data-validation-message-registration").append("Make sure to select at least 1 service");
     } if (clientFirst.length > 1 && clientLast.length > 1 && address.length > 1 && state.length > 3 && city.length > 1 && zip.length == 5 && phone.length == 10 && squareFootage.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true)) {
+        console.log("here")
         window.location.href = "./ClientLandingPage.html";
     }
 
-    console.log(clientFirst);
-    console.log(servicesNeeded1, servicesNeeded2, servicesNeeded3)
+    */
+
+    }
+
 });
 
 
