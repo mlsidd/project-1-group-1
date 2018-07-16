@@ -304,30 +304,5 @@ async function initialize_provider_map()
 
 
 
-      function providerisinrange(origin1,destinationA)
-      { console.log("this function is being called")
-        // var origin1 = new google.maps.LatLng(55.930385, -3.118425);
-        // var origin2 = 'Greenwich, England';
-        // var destinationA = 'Stockholm, Sweden';
-        // var destinationB = new google.maps.LatLng(50.087692, 14.421150);
-
-        var service = new google.maps.DistanceMatrixService();
-        service.getDistanceMatrix(
-          {
-            origins: [origin1],
-            destinations: [destinationA],
-            travelMode: 'DRIVING',
-            // transitOptions: TransitOptions,
-            // drivingOptions: DrivingOptions,
-            unitSystem: google.maps.UnitSystem.IMPERIAL,
-            avoidHighways: false,
-            avoidTolls: false,
-          },       function(response, status) {
-          console.log(response.rows[0].elements[0].distance.value);
-          
-        });
-
-      }
-      
 
  
