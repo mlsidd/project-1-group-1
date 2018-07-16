@@ -2,7 +2,7 @@
       // FROM CACHE var user = localStorage.getItem("email");
   
   database.ref("providers").orderByChild("businessName").equalTo(user).once("value", function(snapshot){
-      console.log(snapshot.val(), "0");  
+      console.log(snapshot.val(), "0"); 
       
       snapshot.forEach(function(childSnapshot){
   
@@ -168,7 +168,7 @@ $("#create_provider_account").on("click", function(event) {
             $("#data-validation-message-registration").append("Make sure to select at least 1 day your are available"); 
         } if($("#mowing").prop('checked') == false && $("#trimBushes").prop('checked') == false && $("#edging").prop('checked') == false) {
             $("#data-validation-message-registration").append("Make sure to select at least 1 service");
-        } else if(providerFirst.length > 1 && providerLast.length > 1 && providerAddress.length > 1 && providerState.length > 3 && providerCity.length > 1 && providerZip.length == 5 && providerPhone.length == 10 && providerMiles.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true) && ($("#monday").prop('checked') == true || $("#tuesday").prop('checked') == true || $("#wednesday").prop('checked') == true || $("#thursday").prop('checked') == true || $("#friday").prop('checked') == true || $("#saturday").prop('checked') == true || $("#sunday").prop('checked') == true)) {
+        } if(providerFirst.length > 1 && providerLast.length > 1 && providerAddress.length > 1 && providerState.length > 3 && providerCity.length > 1 && providerZip.length == 5 && providerPhone.length == 10 && providerMiles.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true) && ($("#monday").prop('checked') == true || $("#tuesday").prop('checked') == true || $("#wednesday").prop('checked') == true || $("#thursday").prop('checked') == true || $("#friday").prop('checked') == true || $("#saturday").prop('checked') == true || $("#sunday").prop('checked') == true)) {
 
             // Set user info in the database
             database.ref('providers/').set({

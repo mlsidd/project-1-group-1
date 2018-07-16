@@ -19,3 +19,10 @@ html, body {
     height:60%;
     width: 60%;
 }
+
+#plp_map{
+    position:absolute;
+    right:5%;
+    height:60%;
+    width: 60%;
+}

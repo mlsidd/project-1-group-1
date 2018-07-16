@@ -15,9 +15,16 @@ var servicesprovided = [];
 var availableDays = [];
 
 // Initialize Firebase
-
+var dataRef = firebase.database();
   console.log(dataRef);
 
+
+
+
+
+
+
+  
 
    //-------------LOGIN PAGE CODE IS BELOW-------------//
 
@@ -43,8 +50,8 @@ $("#create_provider_account").on("click", function(event) {
         $("#data-validation-message").text("Make sure you are entering your email");
     } else if(providerUserName.indexOf("@") > 0 && providerPassword.length > 5) {
         // Create a new user account and store it using local storage
-        localStorage.setItem("userName", providerUserName);
-        localStorage.setItem("Password", providerPassword);
+        localStorage.setItem("email", providerUserName);
+        localStorage.setItem("pass", providerPassword);
         window.location.href = "./Registration-Provider.html";
         var ref = firebase.database().ref("providers/username");
         ref.once("value")
@@ -146,12 +153,13 @@ $("#create_provider_account").on("click", function(event) {
         $("#data-validation-message-registration").append("Make sure to select at least 1 day your are available"); 
     } if($("#mowing").prop('checked') == false && $("#trimBushes").prop('checked') == false && $("#edging").prop('checked') == false) {
         $("#data-validation-message-registration").append("Make sure to select at least 1 service");
-    } else if(providerFirst.length > 1 && providerLast.length > 1 && providerAddress.length > 1 && providerState.length > 3 && providerCity.length > 1 && providerZip.length == 5 && providerPhone.length == 10 && providerMiles.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true) && ($("#monday").prop('checked') == true || $("#tuesday").prop('checked') == true || $("#wednesday").prop('checked') == true || $("#thursday").prop('checked') == true || $("#friday").prop('checked') == true || $("#saturday").prop('checked') == true || $("#sunday").prop('checked') == true)) {
-
+    }
+     if(providerFirst.length > 1 && providerLast.length > 1 && providerAddress.length > 1 && providerState.length > 3 && providerCity.length > 1 && providerZip.length == 5 && providerPhone.length == 10 && providerMiles.length > 1 && ($("#mowing").prop('checked') == true || $("#edging").prop('checked') == true || $("#trimBushes").prop('checked') == true) && ($("#monday").prop('checked') == true || $("#tuesday").prop('checked') == true || $("#wednesday").prop('checked') == true || $("#thursday").prop('checked') == true || $("#friday").prop('checked') == true || $("#saturday").prop('checked') == true || $("#sunday").prop('checked') == true)) {
+        console.log("array was pushed");
         // Push provider data to THE SAME user in the database
         dataRef.ref('providers/').push({
-            username: localStorage.getItem("userName"),
-            password: localStorage.getItem("Password"),
+            username: localStorage.getItem("email"),
+            password: localStorage.getItem("pass"),
             firstname: providerFirst,
             lastname: providerLast,
             businessName: businessName,
@@ -160,11 +168,15 @@ $("#create_provider_account").on("click", function(event) {
             state: providerState,
             city: providerCity,
             zip: providerZip,
+            coordinates:null,
+            price:3/*place holder until we have an input field for this*/,
             phone: providerPhone,
             miles: providerMiles,
             availableDays: availableDays,
             servicesprovided: servicesprovided,
-            dateAdded: firebase.database.ServerValue.TIMESTAMP
+            dateAdded: firebase.database.ServerValue.TIMESTAMP,
+            rating:5/*placeholder*/,
+            about:"feature coming soon"
         });
         // Take user to the landing page    
         window.location.href = "./ProviderLandingPage.html";
@@ -179,7 +191,6 @@ $("#create_provider_account").on("click", function(event) {
    //-------------LANDING PAGE CODE IS BELOW-------------//
 
    dataRef.ref().on("child_added", function(childSnapshot) {
-       console.log(childSnapshot.val());
 
        $("#firstNameStored").text(childSnapshot.val().providerFirst);
 
@@ -206,6 +217,47 @@ $("#create_provider_account").on("click", function(event) {
     profile.on("click", function(event) {
         event.preventDefault();
         //set the values in the input forms to the users answers that are stored in firebase
+            var user = "cool trimmings";
+                // FROM CACHE var user = localStorage.getItem("email");
+            
+            dataRef.ref("providers").orderByChild("businessName").equalTo(user).once("value", function(snapshot){
+                console.log(snapshot.val(), "0");  
+                
+                snapshot.forEach(function(childSnapshot){
+            
+                    console.log(childSnapshot.child("firstname").val());
+            
+            
+                    $("#firstNameAnswer").val(childSnapshot.child("firstname").val());
+                    $("#lastNameAnswer").val(childSnapshot.child("lastname").val());
+                    $("#businessNameAnswer").val(childSnapshot.child("businessName").val());
+                    $("#inputAddressAnswer").val(childSnapshot.child("address").val());
+                    $("#inputAddress2Answer").val(childSnapshot.child("address2").val());
+                    $("#inputCityAnswer").val(childSnapshot.child("city").val());
+                    $("#inputStateAnswer").val(childSnapshot.child("state").val());
+                    $("#inputZipAnswer").val(childSnapshot.child("zip").val());
+                    $("#phoneNumberAnswer").val(childSnapshot.child("phone").val());
+                
+                    $("#milesAnswer").val(childSnapshot.child("miles").val());
+                    
+                    //NEED TO ADDRESS how we store services and dates for the following
+                    $("#edging").val(childSnapshot.child("servicesProvided").child("0").val());
+                    $("#mowing").val(childSnapshot.child("servicesProvided").child("1").val());
+                    $("#trimBushes").val(childSnapshot.child("servicesProvided").child("2").val());
+        
+                    $("#monday").val(childSnapshot.child("availableDays").child("0").val());
+                    $("#tuesday").val(childSnapshot.child("availableDays").child("0").val());
+                    $("#wednesday").val(childSnapshot.child("availableDays").child("0").val());
+                    $("#thursday").val(childSnapshot.child("availableDays").child("0").val());
+                    $("#friday").val(childSnapshot.child("availableDays").child("0").val());
+                    $("#saturday").val(childSnapshot.child("availableDays").child("0").val());
+                    $("#sunday").val(childSnapshot.child("availableDays").child("0").val());
+        
+        
+            
+                });
+            });
+
         // $("#inputStateAnswer").attr("placeholder", //users firebase answer);
         profileHolder.show();
         placeholderForDisplay.hide();
@@ -219,6 +271,8 @@ $("#create_provider_account").on("click", function(event) {
         placeholderForDisplay.hide();
         calendarHolder.hide();
         profileHolder.hide();
+        window.location.href = "./messages.html"
+   
         })
 
     calendar.on("click", function(event) {
@@ -231,3 +285,45 @@ $("#create_provider_account").on("click", function(event) {
   
 
 
+        async function grab_provider_data() {
+    
+ 
+            let dataRef = firebase.database();
+           
+        
+        
+            let temp = await dataRef.ref("providers").once("value").then(function(snapshot){return snapshot.val();})
+        
+            
+                let bool = false;
+                //let b = Object.keys(temp);
+                //let iteration = 0;
+                for (let c in temp) {
+        
+                    if (temp[c].username == localStorage.getItem("email") && temp[c].password == localStorage.getItem("pass")) {
+                        obj={
+                        firstname: temp[c].firstname,
+                        lastname: temp[c].lastname,
+                        phone: temp[c].phone,
+                        city: temp[c].city,
+                        state: temp[c].state,
+                        coordinates:temp[c].coordinates,
+                        username: temp[c].username,
+                        userKey: c
+                        };
+                         bool=true;
+                    }
+                  
+                }
+           
+            
+            if(bool==true)
+            {
+              return obj;  
+            }else{
+                return "user not found";
+            }
+            
+        
+        }
+        
