@@ -170,23 +170,59 @@ async function initialize_landing_page_map()
         };
         
         var map = new google.maps.Map(document.getElementById('clp_map'),mapOptions);
-   
+        
         for(let c in providers)
         {  let s = providers[c] ;
-          
-           let scontent="name: "+s.firstname+"<br>rating: "+s.rating+"<br>about: "+s.about+"<br>price per sqft: "+s.price+"<br> number: "+s.phone+"<br><button class='messageprovider' id='"+s.username+"'>message</button>";
-           let sinfo = new google.maps.InfoWindow({content:scontent});
-           let  smarker =  new google.maps.Marker({
-             position:s.coordinates,
-             map:map,
-             title:s.businessName
+           
+
+           //if(providerisinrange()){draw provider:just put this bracket from here to the end of this for loop}
+            if(s.coordinates)
+            {
+              console.log("hello")
+            
+           var origin1 = new google.maps.LatLng(pos.lat,pos.lng);
+      
+           var destinationA = new google.maps.LatLng(s.coordinates.lat, s.coordinates.lng);
+  
+         
+
+           
+           //providerisinrange(origin1,destinationA);
+           var service = new google.maps.DistanceMatrixService();
+           service.getDistanceMatrix(
+             {
+               origins: [origin1],
+               destinations: [destinationA],
+               travelMode: 'DRIVING',
+               // transitOptions: TransitOptions,
+               // drivingOptions: DrivingOptions,
+               unitSystem: google.maps.UnitSystem.IMPERIAL,
+               avoidHighways: false,
+               avoidTolls: false,
+             },       function(response, status) {
+             var distance = response.rows[0].elements[0].distance.value;
+             
+             if((distance)<(s.miles*1000))
+             {
+
+                  let scontent="name: "+s.firstname+"<br>rating: "+s.rating+"<br>about: "+s.about+"<br>price per sqft: "+s.price+"<br> number: "+s.phone+"<br><button class='messageprovider' id='"+s.username+"'>message</button>";
+                  let sinfo = new google.maps.InfoWindow({content:scontent});
+                  let  smarker =  new google.maps.Marker({
+                    position:s.coordinates,
+                    map:map,
+                    title:s.businessName
+                    
+                  });
+                  //console.log(sinfo[i])
+                  smarker.addListener('click',function(){sinfo.open(map,smarker);
+                    $(".messageprovider").on("click",function(){sessionStorage.setItem("to",$(this).attr("id"));build_channel();window.location.href="./messages.html"})});
+                  console.log(s.miles);
+             }
              
            });
-           //console.log(sinfo[i])
-           smarker.addListener('click',function(){sinfo.open(map,smarker);
-            $(".messageprovider").on("click",function(){sessionStorage.setItem("to",$(this).attr("id"));build_channel();window.location.href="./messages.html"})});
-           console.log("testing");
-         
+
+          
+          }
         }
         
         
@@ -213,7 +249,7 @@ async function initialize_provider_map()
  
         var a;
         //json api call for address to coordinates.
-        //address= dude.address+" "+dude.city+" "+dude.state+" "+dude.zip;
+       
          await $.ajax({
             method:"GET",
             url:qurl
@@ -240,7 +276,7 @@ async function initialize_provider_map()
         clickpos = {lat:event.latLng.lat(),lng:event.latLng.lng()}
         console.log(clickpos);
         console.log(userinfo.userKey);
-        //firebase.database().ref("providers").child(userinfo.userKey).remove("coordinates");
+       
         firebase.database().ref("providers").child(userinfo.userKey).child("coordinates").set(clickpos);
         userinfo = await grab_provider_data();
                for(i=0; i<markerArray.length; i++){
@@ -266,3 +302,7 @@ async function initialize_provider_map()
         }
       }
 
+
+
+
+ 
